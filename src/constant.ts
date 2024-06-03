@@ -1,0 +1,1 @@
+export const baseURLPrefix = "/wiki";
