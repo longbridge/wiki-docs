@@ -22,7 +22,7 @@ export const loadHighlight = async () => {
 
   setTimeout(() => {
     const newHighlightDom = document.createElement('x-highlight')
-    newHighlightDom.setAttribute('container', `[class^='docMainContainer']`)
+    newHighlightDom.setAttribute('container', '.wiki-article-content')
     newHighlightDom.className = 'doc-highlight'
 
     document.body.appendChild(newHighlightDom)

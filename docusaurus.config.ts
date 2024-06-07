@@ -1,13 +1,14 @@
-const { lightTheme } = require('./config/theme')
-const darkCodeTheme = require('prism-react-renderer/themes/vsDark')
+const { lightTheme } = require("./config/theme");
+const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import process from "node:process";
 import { baseURLPrefix } from "./src/constant";
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const openapiDomain = 'https://open.longportapp.com'
-const communityDomain = 'https://longportapp.com'
-const i18n = require('./i18n/config')
+
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const openapiDomain = "https://open.longportapp.com";
+const communityDomain = "https://longportapp.com";
+const i18n = require("./i18n/config");
 
 const config: Config = {
   title: "LongPort wiki",
@@ -18,18 +19,38 @@ const config: Config = {
   baseUrlIssueBanner: false,
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
-  favicon: 'https://pub.lbkrs.com/static/offline/202211/qohHsXzN9qtQ23ox/longport_favicon.png',
+  favicon: "https://pub.lbkrs.com/static/offline/202211/qohHsXzN9qtQ23ox/longport_favicon.png",
   customFields: {
     isDev: process.env.STAGE === "dev",
     API_BASE_URL: process.env.API_BASE_URL || "https://need.env.config.api.path"
   },
   markdown: {
-    mermaid: true,
+    mermaid: true
   },
 
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ["@docusaurus/theme-mermaid"],
   plugins: [
     "docusaurus-plugin-sass",
+    function docusaurusDevServer() {
+      return {
+        name: "custom-docusaurus-server",
+        configureWebpack(config, isServer, utils, content) {
+          return {
+            devServer: {
+              open: "/zh-CN/learn",
+              proxy: {
+                "/YOUR_COOL_ROUTE": {
+                  target: "https://YOUR_COOL_API/",
+                  secure: false,
+                  changeOrigin: true,
+                  logLevel: "debug"
+                }
+              }
+            }
+          };
+        }
+      };
+    },
     function docusaurusTailwindCss() {
       return {
         name: "docusaurus-tailwindcss",
@@ -42,29 +63,29 @@ const config: Config = {
     },
     function docsWebpackConfig(context, options) {
       return {
-        name: 'longport-wiki-webpack-plugin',
+        name: "longport-wiki-webpack-plugin",
         configureWebpack(config, isServer, utils, content) {
-          if (isServer) return {}
-          const docsAssetPrefix = 'longport-learn-wiki'
+          if (isServer) return {};
+          const docsAssetPrefix = "longport-learn-wiki";
           return {
             output: {
               filename: `assets/js/${docsAssetPrefix}_[name].[contenthash:8].js`,
-              chunkFilename: `assets/js/${docsAssetPrefix}_[name].[contenthash:8].js`,
+              chunkFilename: `assets/js/${docsAssetPrefix}_[name].[contenthash:8].js`
             },
             plugins: [
               new MiniCssExtractPlugin({
                 filename: `assets/css/${docsAssetPrefix}_[name].[contenthash:8].css`,
                 chunkFilename: `assets/css/${docsAssetPrefix}_[name].[contenthash:8].css`,
-                ignoreOrder: true,
-              }),
-            ],
-          }
-        },
-      }
-    },
+                ignoreOrder: true
+              })
+            ]
+          };
+        }
+      };
+    }
   ],
 
-   i18n,
+  i18n,
 
   presets: [
     [
@@ -73,10 +94,10 @@ const config: Config = {
         debug: true,
         blog: false,
         docs: {
-          sidebarPath: "./sidebars.ts",
+          sidebarPath: "./sidebars.ts"
         },
         pages: {
-          showLastUpdateTime:true,
+          showLastUpdateTime: true
         },
         theme: {
           customCss: "./src/css/custom.css"
@@ -86,69 +107,69 @@ const config: Config = {
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  /** @type {import("@docusaurus/preset-classic").ThemeConfig} */
     {
       metadata: [
         {
-          name: 'og:image',
-          content: 'https://pub.lbkrs.com/files/202211/sJswdGqSX1xDqrES/lonport-seo-img.png',
+          name: "og:image",
+          content: "https://pub.lbkrs.com/files/202211/sJswdGqSX1xDqrES/lonport-seo-img.png"
         },
         {
-          name: 'twitter:image',
-          content: 'https://pub.lbkrs.com/files/202211/sJswdGqSX1xDqrES/lonport-seo-img.png',
-        },
+          name: "twitter:image",
+          content: "https://pub.lbkrs.com/files/202211/sJswdGqSX1xDqrES/lonport-seo-img.png"
+        }
       ],
       colorMode: {
-        defaultMode: 'light',
+        defaultMode: "light",
         disableSwitch: true,
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: false
       },
       navbar: {
-        title: '',
+        title: "",
         logo: {
-          alt: 'LongPort',
+          alt: "LongPort",
           href: openapiDomain,
-          target: '_self',
-          src: 'https://pub.lbkrs.com/files/202211/BoUn1BSQuAHDX4GY/logo-with-title.svg',
+          target: "_self",
+          src: "https://pub.lbkrs.com/files/202211/BoUn1BSQuAHDX4GY/logo-with-title.svg"
         },
         items: [
           {
             to: openapiDomain,
-            position: 'left',
-            target: '_self',
-            label: '开发者认证',
-            activeBaseRegex: '^/$',
+            position: "left",
+            target: "_self",
+            label: "开发者认证",
+            activeBaseRegex: "^/$"
           },
           {
-            to: '/docs',
-            activeBasePath: '/docs',
-            label: '文档',
-            position: 'left',
+            to: "/docs",
+            activeBasePath: "/docs",
+            label: "文档",
+            position: "left"
           },
           {
             to: communityDomain,
-            label: '社区',
-            target: '_self',
-            position: 'left',
+            label: "社区",
+            target: "_self",
+            position: "left"
           },
           {
             to: `${communityDomain}/markets`,
-            target: '_self',
-            label: '市场',
-            position: 'left',
+            target: "_self",
+            label: "市场",
+            position: "left"
           },
           {
-            type: 'search',
-            position: 'right',
-            className: 'search-container',
+            type: "search",
+            position: "right",
+            className: "search-container"
           },
           {
-            type: 'localeDropdown',
-            position: 'right',
+            type: "localeDropdown",
+            position: "right"
           },
           {
-            type: 'html',
-            position: 'right',
+            type: "html",
+            position: "right",
             value: `
             <a href="https://github.com/longportapp/openapi-sdk" target="_blank" rel="noopener noreferrer" style="display:inline-block;width:26px;height:26px" title="LongPort SDK OpenSource">
               <svg height="26" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="26" data-view-component="true" class="octicon octicon-mark-github v-align-middle color-fg-default">
@@ -156,13 +177,13 @@ const config: Config = {
               </svg>
             </a>
           `,
-            className: 'github-container',
-          },
-        ],
+            className: "github-container"
+          }
+        ]
       },
       prism: {
         theme: lightTheme,
-        darkTheme: darkCodeTheme,
+        darkTheme: darkCodeTheme
       }
     } satisfies Preset.ThemeConfig
 };

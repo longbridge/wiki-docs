@@ -5,24 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import clsx from 'clsx';
+import React, { useEffect, useRef } from "react";
+import clsx from "clsx";
 import {
   PageMetadata,
   HtmlClassNameProvider,
-  ThemeClassNames,
-} from '@docusaurus/theme-common';
-import Layout from '@theme/Layout';
-import MDXContent from '@theme/MDXContent';
-import TOC from '@theme/TOC';
-import Unlisted from '@theme/Unlisted';
-import type {Props} from '@theme/MDXPage';
-
-import EditMetaRow from '@theme/EditMetaRow';
-import styles from './styles.module.css';
+  ThemeClassNames
+} from "@docusaurus/theme-common";
+import Layout from "@theme/Layout";
+import MDXContent from "@theme/MDXContent";
+import TOC from "@theme/TOC";
+import Unlisted from "@theme/Unlisted";
+import type { Props } from "@theme/MDXPage";
+import EditMetaRow from "@theme/EditMetaRow";
+import styles from "./styles.module.css";
 
 export default function MDXPage(props: Props): JSX.Element {
-  const {content: MDXPageContent} = props;
+  const { content: MDXPageContent } = props;
   const {
     metadata: {
       title,
@@ -31,24 +30,26 @@ export default function MDXPage(props: Props): JSX.Element {
       frontMatter,
       unlisted,
       lastUpdatedBy,
-      lastUpdatedAt,
+      lastUpdatedAt
     },
-    assets,
+    assets
   } = MDXPageContent;
   const {
     keywords,
     wrapperClassName,
-    hide_table_of_contents: hideTableOfContents,
+    hide_table_of_contents: hideTableOfContents
   } = frontMatter;
   const image = assets.image ?? frontMatter.image;
 
   const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
 
+
+
   return (
     <HtmlClassNameProvider
       className={clsx(
         wrapperClassName ?? ThemeClassNames.wrapper.mdxPages,
-        ThemeClassNames.page.mdxPage,
+        ThemeClassNames.page.mdxPage
       )}>
       <Layout>
         <PageMetadata
@@ -58,8 +59,8 @@ export default function MDXPage(props: Props): JSX.Element {
           image={image}
         />
         <main className="container container--fluid margin-vert--lg">
-          <div className={clsx('row', styles.mdxPageWrapper)}>
-            <div className={clsx('col', !hideTableOfContents && 'col--8')}>
+          <div className={clsx("row", styles.mdxPageWrapper)}>
+            <div className={clsx("col", !hideTableOfContents && "col--8")}>
               {unlisted && <Unlisted />}
               <article className={"wiki-article-content"}>
                 <MDXContent>
@@ -69,8 +70,8 @@ export default function MDXPage(props: Props): JSX.Element {
               {canDisplayEditMetaRow && (
                 <EditMetaRow
                   className={clsx(
-                    'margin-top--sm',
-                    ThemeClassNames.pages.pageFooterEditMetaRow,
+                    "margin-top--sm",
+                    ThemeClassNames.pages.pageFooterEditMetaRow
                   )}
                   editUrl={editUrl}
                   lastUpdatedAt={lastUpdatedAt}

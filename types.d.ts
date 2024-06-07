@@ -15,6 +15,6 @@ export type IWiki = {
   slug: string
   created_at: string
   updated_at?: string
-  content_updated_at: string
+  content_updated_at: any
   alias: Array<any>
 }

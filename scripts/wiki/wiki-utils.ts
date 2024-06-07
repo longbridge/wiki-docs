@@ -1,5 +1,13 @@
-import { IWiki, LocaleEnums } from "../../types.d";
+import { IWiki, } from "../../types.d";
 import dayjs from "dayjs";
+
+/**
+ * 删除所有 HTML 标签
+ * @param HTML html 字符串
+ * @returns 纯字符串
+ */
+const removeHtmlTag = (html = '') => html.replace(/(<([^>]+)>)/gi, '')
+
 
 export class WikiUtils {
   private wiki: IWiki;
@@ -24,11 +32,11 @@ export class WikiUtils {
   }
 
   get liteDesc() {
-    return this.description.slice(0, 100);
+    return removeHtmlTag(this.description).slice(0, 120);
   }
 
   get contentUpdatedAt() {
-    return dayjs(this.wiki.content_updated_at).format("YYYY-MM-DD HH:mm:ss");
+    return dayjs(this.wiki.content_updated_at * 1000).format("YYYY-MM-DD HH:mm:ss");
   }
 
   get pageSlug() {

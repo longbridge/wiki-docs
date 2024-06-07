@@ -6,6 +6,9 @@ hide_table_of_contents: true
 ---
 
 import {ArticleMeta} from '@site/src/components/article-meta'
+import {Breadcrumbs} from '@site/src/components/breadcrumbs'
+
+<Breadcrumbs current="<%= title %>" />
 
 # <%= title %>
 

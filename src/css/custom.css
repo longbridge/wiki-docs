@@ -16,6 +16,7 @@
   --ifm-breadcrumb-separator: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"/></svg>');
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 11.828l-2.828 2.829-1.415-1.414L12 9l4.243 4.243-1.415 1.414L12 11.828z"/></svg>');
 }
+
 @tailwind utilities;
 body {
   color: #222;
@@ -75,7 +76,7 @@ body {
     opacity: 0.4 !important;
   }
 
-  &--active {
+  & --active {
     .breadcrumbs__link {
       color: #333 !important;
     }
@@ -87,10 +88,10 @@ body {
   .tabs {
     @apply p-0 m-0 space-x-4 border;
 
-    &__item {
+    & __item {
       @apply text-sm font-medium leading-none py-2 px-0;
 
-      &--active {
+      & --active {
         @apply text-blue-500 border-b-2;
       }
 
@@ -108,6 +109,7 @@ body {
   .pagination-nav__sublabel {
     @apply hidden;
   }
+
   .pagination-nav__label {
     @apply font-normal text-base text-gray-800;
   }
@@ -119,16 +121,16 @@ body {
 
 .github-container {
   height: 36px;
+
   a {
     margin-top: 5px;
   }
 }
 
 
-
 .main-wrapper {
-  .container{
-    max-width: 800px;
+  .container {
+    max-width: 780px;
   }
 }
 
