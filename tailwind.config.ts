@@ -2,9 +2,9 @@ import colors from 'tailwindcss/colors'
 
 export default {
   content: [
-    './src/**/*.{js,scss,css,ts,tsx,jsx}',
-    './i18n/**/*.{js,scss,css,ts,tsx,jsx}',
-    './docs/**/*.{js,scss,css,ts,tsx,jsx}',
+    './src/**/*.{js,scss,css,ts,tsx,jsx,mdx}',
+    './i18n/**/*.{js,scss,css,ts,tsx,jsx,mdx}',
+    './docs/**/*.{js,scss,css,ts,tsx,jsx,mdx}',
   ],
   theme: {
     colors: {

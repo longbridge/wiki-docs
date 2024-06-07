@@ -1,1 +1,1 @@
-export const baseURLPrefix = "/wiki";
+export const baseURLPrefix = "/";
