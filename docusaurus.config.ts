@@ -10,6 +10,12 @@ const openapiDomain = "https://open.longportapp.com";
 const communityDomain = "https://longportapp.com";
 const i18n = require("./i18n/config");
 
+
+const isDev = process.env.NODE_ENV !== "production";
+const targetPortalPath = process.env.Proxy === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
+const localAPIProxyPath = "/dev-proxy";
+const apiProxyUrl = `${isDev ? localAPIProxyPath : targetPortalPath}/api/forward`;
+
 const config: Config = {
   title: "LongPort wiki",
   url: "https://longportapp.com",
@@ -21,36 +27,25 @@ const config: Config = {
   onBrokenMarkdownLinks: "warn",
   favicon: "https://pub.lbkrs.com/static/offline/202211/qohHsXzN9qtQ23ox/longport_favicon.png",
   customFields: {
-    isDev: process.env.STAGE === "dev",
-    API_BASE_URL: process.env.API_BASE_URL || "https://need.env.config.api.path"
+    isDev,
+    apiProxyUrl
   },
   markdown: {
     mermaid: true
   },
 
+  headTags: [
+    {
+      tagName: "script",
+      attributes: {
+        src: "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"
+      }
+    }
+  ],
+
   themes: ["@docusaurus/theme-mermaid"],
   plugins: [
     "docusaurus-plugin-sass",
-    function docusaurusDevServer() {
-      return {
-        name: "custom-docusaurus-server",
-        configureWebpack(config, isServer, utils, content) {
-          return {
-            devServer: {
-              open: "/zh-CN/learn",
-              proxy: {
-                "/YOUR_COOL_ROUTE": {
-                  target: "https://YOUR_COOL_API/",
-                  secure: false,
-                  changeOrigin: true,
-                  logLevel: "debug"
-                }
-              }
-            }
-          };
-        }
-      };
-    },
     function docusaurusTailwindCss() {
       return {
         name: "docusaurus-tailwindcss",
@@ -65,9 +60,21 @@ const config: Config = {
       return {
         name: "longport-wiki-webpack-plugin",
         configureWebpack(config, isServer, utils, content) {
-          if (isServer) return {};
           const docsAssetPrefix = "longport-learn-wiki";
           return {
+            devServer: {
+              open: "/zh-CN/learn",
+              port: 4040,
+              proxy: [{
+                context: [localAPIProxyPath],
+                target: targetPortalPath,
+                changeOrigin: true,
+                secure: false,
+                pathRewrite: {
+                  [`^${localAPIProxyPath}`]: ""
+                }
+              }]
+            },
             output: {
               filename: `assets/js/${docsAssetPrefix}_[name].[contenthash:8].js`,
               chunkFilename: `assets/js/${docsAssetPrefix}_[name].[contenthash:8].js`

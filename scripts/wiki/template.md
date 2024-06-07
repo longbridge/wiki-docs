@@ -12,7 +12,7 @@ import {Breadcrumbs} from '@site/src/components/breadcrumbs'
 
 # <%= title %>
 
-<ArticleMeta viewCount={<%= id %>} updatedAt={'<%=contentUpdatedAt%>'} />
+<ArticleMeta id={<%= id %>} updatedAt={'<%=contentUpdatedAt%>'} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 <%= body || description %>
