@@ -45,7 +45,7 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
   }, []);
 
   return (
-    <div className={"article-meta flex items-center justify-between text-gray-100 text-sm"}>
+    <div className={"article-meta flex items-center justify-between text-sm"}>
       <div className="info">
         {!!viewCount &&
           <span className={"view-count"}>{viewCount} 人学过 .</span>

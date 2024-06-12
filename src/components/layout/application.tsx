@@ -6,7 +6,7 @@ const ApplicationLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout title={`${siteConfig.title}`} description="LongPort Wiki">
-      <div className="max-w-screen-xl m-auto">
+      <div className="max-w-screen-xl m-auto px-4 md:px-0">
         {children}
       </div>
     </Layout>

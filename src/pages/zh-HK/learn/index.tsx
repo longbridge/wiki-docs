@@ -4,7 +4,7 @@ import { WikiList } from "@site/src/components/wiki-list";
 export default function Home() {
   return (
     <ApplicationLayout>
-      <WikiList />
+      <WikiList/>
     </ApplicationLayout>
   );
 }

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import clsx from "clsx";
 import {
   PageMetadata,

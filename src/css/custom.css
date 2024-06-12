@@ -1,7 +1,7 @@
-@import './components/navbar.scss';
-@import 'react-photo-view/dist/react-photo-view.css';
-@import './components/markdown.scss';
-@import './components/wiki-page.scss';
+@import "./components/navbar.scss";
+@import "react-photo-view/dist/react-photo-view.css";
+@import "./components/markdown.scss";
+@import "./components/wiki-page.scss";
 
 :root {
   --ifm-color-primary: #37a0ff;
@@ -33,7 +33,9 @@ body {
   }
 }
 
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu-link {
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu-link {
   font-weight: bold;
 }
 
@@ -127,11 +129,12 @@ body {
   }
 }
 
-
 .main-wrapper {
   .container {
     max-width: 780px;
   }
 }
 
-
+.pagination-nav {
+  margin-top: 100px !important;
+}

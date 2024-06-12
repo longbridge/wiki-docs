@@ -31,7 +31,7 @@ const supportLocales = Object.keys(LocaleEnums);
 export async function generateWikiMD(wiki: IWiki) {
   const localesGenerate = supportLocales.map((locale) => {
     const wikiUtils = new WikiUtils(wiki, locale);
-    const docDir = `${projectRoot}/src/pages/${locale}/learn/wiki`;
+    const docDir = `${projectRoot}/docs/${locale}/learn/wiki`;
     const docPath = `${docDir}/${wiki.slug}.mdx`;
     const dirname = path.dirname(docPath);
     if (!fs.existsSync(dirname)) {

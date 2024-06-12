@@ -101,7 +101,8 @@ const config: Config = {
         debug: true,
         blog: false,
         docs: {
-          sidebarPath: "./sidebars.ts"
+          sidebarPath: "./sidebars.ts",
+          routeBasePath: "/"
         },
         pages: {
           showLastUpdateTime: true
