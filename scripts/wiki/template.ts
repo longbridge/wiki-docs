@@ -5,6 +5,7 @@
  * */
 
 import { WikiUtils } from "./wiki-utils";
+
 const _template = require("lodash.template");
 
 const fs = require("fs");
@@ -15,15 +16,15 @@ function escapeHtml(str) {
   return !/[<>&"']/.test(str)
     ? str
     : str
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll("\"", "&quot;");
 }
 
 const projectRoot = path.resolve(__dirname, "../../");
 const template = fs.readFileSync(
-  path.resolve(__dirname, "./template.md"),
+  path.resolve(__dirname, "./template.mdx"),
   "utf-8"
 );
 const supportLocales = Object.keys(LocaleEnums);
@@ -31,7 +32,14 @@ const supportLocales = Object.keys(LocaleEnums);
 export async function generateWikiMD(wiki: IWiki) {
   const localesGenerate = supportLocales.map((locale) => {
     const wikiUtils = new WikiUtils(wiki, locale);
-    const docDir = `${projectRoot}/docs/${locale}/learn/wiki`;
+
+    let docDir = "";
+    if (locale === "zh-CN") {
+      docDir = `${projectRoot}/docs/learn/wiki`;
+    } else {
+      docDir = `${projectRoot}/i18n/${locale}/docusaurus-plugin-content-docs/current/learn/wiki`;
+    }
+
     const docPath = `${docDir}/${wiki.slug}.mdx`;
     const dirname = path.dirname(docPath);
     if (!fs.existsSync(dirname)) {

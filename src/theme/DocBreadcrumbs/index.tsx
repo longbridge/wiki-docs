@@ -10,14 +10,12 @@ import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import {
   useSidebarBreadcrumbs,
-  useHomePageRoute,
 } from '@docusaurus/theme-common/internal';
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 import HomeBreadcrumbItem from '@theme/DocBreadcrumbs/Items/Home';
 
 import styles from './styles.module.css';
-import { useDocsSidebar } from "@docusaurus/theme-common/internal";
 
 // TODO move to design system folder
 function BreadcrumbsItemLink({
@@ -81,10 +79,6 @@ function BreadcrumbsItem({
 
 export default function DocBreadcrumbs(): JSX.Element | null {
   const breadcrumbs = useSidebarBreadcrumbs();
-  const sidebar = useDocsSidebar();
-  console.log('DocBreadcrumbs-85', sidebar)
-  const homePageRoute = useHomePageRoute();
-
   if (!breadcrumbs) {
     return null;
   }

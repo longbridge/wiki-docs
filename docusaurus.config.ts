@@ -23,8 +23,8 @@ const config: Config = {
   organizationName: "longportapp",
   projectName: "wiki-docs",
   baseUrlIssueBanner: false,
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "ignore",
+  onBrokenMarkdownLinks: "ignore",
   favicon: "https://pub.lbkrs.com/static/offline/202211/qohHsXzN9qtQ23ox/longport_favicon.png",
   customFields: {
     isDev,
@@ -42,7 +42,7 @@ const config: Config = {
       }
     }
   ],
-
+  i18n,
   themes: ["@docusaurus/theme-mermaid"],
   plugins: [
     "docusaurus-plugin-sass",
@@ -57,9 +57,11 @@ const config: Config = {
       };
     },
     function docsWebpackConfig(context, options) {
+
       return {
         name: "longport-wiki-webpack-plugin",
         configureWebpack(config, isServer, utils, content) {
+          if (isServer) return {};
           const docsAssetPrefix = "longport-learn-wiki";
           return {
             devServer: {
@@ -92,23 +94,18 @@ const config: Config = {
     }
   ],
 
-  i18n,
 
   presets: [
     [
       "classic",
       {
-        debug: true,
         blog: false,
         docs: {
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/"
         },
-        pages: {
-          showLastUpdateTime: true
-        },
         theme: {
-          customCss: "./src/css/custom.css"
+          customCss: "./src/css/custom.scss"
         }
       } satisfies Preset.Options
     ]
@@ -147,12 +144,6 @@ const config: Config = {
             target: "_self",
             label: "开发者认证",
             activeBaseRegex: "^/$"
-          },
-          {
-            to: "/docs",
-            activeBasePath: "/docs",
-            label: "文档",
-            position: "left"
           },
           {
             to: communityDomain,

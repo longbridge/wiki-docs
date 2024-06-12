@@ -53,7 +53,7 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
         <span className={"updated-at"}>更新于 {updatedAt}</span>
       </div>
       <div className="actions">
-        <div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection} data-clipboard-text={window.location.href}>
+        <div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection} >
           <div className="copy-link" />
         </div>
       </div>
