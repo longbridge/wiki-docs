@@ -34,7 +34,7 @@ export async function generateWikiMD(wiki: IWiki) {
     const wikiUtils = new WikiUtils(wiki, locale);
 
     let docDir = "";
-    if (locale === "zh-CN") {
+    if (locale === "en") {
       docDir = `${projectRoot}/docs/learn/wiki`;
     } else {
       docDir = `${projectRoot}/i18n/${locale}/docusaurus-plugin-content-docs/current/learn/wiki`;

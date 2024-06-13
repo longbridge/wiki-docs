@@ -8,7 +8,7 @@
     "start": "docusaurus start --port 4040",
     "dev": "yarn start",
     "build": "yarn clear && docusaurus build --out-dir ./dist",
-    "build2": "docusaurus build --out-dir ./dist",
+    "postbuild": "sh ./setup-dist-dir.sh",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",

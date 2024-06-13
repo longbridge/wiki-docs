@@ -26,7 +26,6 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
     });
   }, [apiProxyUrl, id]);
 
-  const copyLinkID = `copy_url_${id}`;
   const onClickCopySection = useCallback(() => {
 
   }, []);

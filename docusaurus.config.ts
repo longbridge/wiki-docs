@@ -1,3 +1,5 @@
+import { genSSRTemplate } from "./ssr-template";
+
 const { lightTheme } = require("./config/theme");
 const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
 import type { Config } from "@docusaurus/types";
@@ -12,7 +14,9 @@ const i18n = require("./i18n/config");
 
 
 const isDev = process.env.NODE_ENV !== "production";
-const targetPortalPath = process.env.PROXY === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
+const proxy = process.env.PROXY || 'release';
+const ossEnv = isDev ? "/" : proxy;
+const targetPortalPath = proxy === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
 const localAPIProxyPath = "/dev-proxy";
 const apiProxyUrl = `${isDev ? localAPIProxyPath : targetPortalPath}/api/forward`;
 
@@ -25,15 +29,13 @@ const config: Config = {
   baseUrlIssueBanner: false,
   onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "ignore",
+  ssrTemplate:genSSRTemplate(ossEnv),
+  trailingSlash: false, // https://docusaurus.io/docs/api/docusaurus-config#trailingSlash
   favicon: "https://pub.lbkrs.com/static/offline/202211/qohHsXzN9qtQ23ox/longport_favicon.png",
   customFields: {
     isDev,
     apiProxyUrl
   },
-  markdown: {
-    mermaid: true
-  },
-
   headTags: [
     {
       tagName: "script",
@@ -59,14 +61,13 @@ const config: Config = {
     function docsWebpackConfig(context, options) {
 
       return {
-        name: "longport-wiki-webpack-plugin",
+        name: "longportapp-wiki-webpack-plugin",
         configureWebpack(config, isServer, utils, content) {
           if (isServer) return {};
-          const docsAssetPrefix = "longport-learn-wiki";
+          const docsAssetPrefix = "longportapp-learn-wiki";
           return {
             devServer: {
-              open: "/zh-CN/learn",
-              port: 4040,
+              open: "/en/learn",
               proxy: [{
                 context: [localAPIProxyPath],
                 target: targetPortalPath,
