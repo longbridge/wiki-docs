@@ -14,7 +14,7 @@ const i18n = require("./i18n/config");
 
 
 const isDev = process.env.NODE_ENV !== "production";
-const proxy = process.env.PROXY || 'release';
+const proxy = process.env.PROXY || "release";
 const ossEnv = isDev ? "/" : proxy;
 const targetPortalPath = proxy === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
 const localAPIProxyPath = "/dev-proxy";
@@ -29,7 +29,7 @@ const config: Config = {
   baseUrlIssueBanner: false,
   onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "ignore",
-  ssrTemplate:genSSRTemplate(ossEnv),
+  ssrTemplate: genSSRTemplate(ossEnv),
   trailingSlash: false, // https://docusaurus.io/docs/api/docusaurus-config#trailingSlash
   favicon: "https://pub.lbkrs.com/static/offline/202211/qohHsXzN9qtQ23ox/longport_favicon.png",
   customFields: {
@@ -107,7 +107,20 @@ const config: Config = {
         },
         theme: {
           customCss: "./src/css/custom.scss"
+        },
+        sitemap: {
+          createSitemapItems: async (params) => {
+            const { defaultCreateSitemapItems, ...rest } = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return await items.map((item) => {
+              return item.url = item.url
+                .replace("zh-CN/zh-CN", "zh-CN")
+                .replace("en/en", "en")
+                .replace("zh-HK/zh-HK", "zh-HK")
+            });
+          }
         }
+
       } satisfies Preset.Options
     ]
   ],
