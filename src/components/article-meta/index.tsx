@@ -1,6 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { post } from "@site/src/api";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { translate } from "@docusaurus/Translate";
 
 interface IArticleMetaProps {
   updatedAt: string | null;
@@ -10,7 +11,11 @@ interface IArticleMetaProps {
 export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
   const { updatedAt, id } = props;
   const [viewCount, setViewCount] = useState(0);
-
+  // translate({
+  //   id: "theme.docs.paginator.navAriaLabel",
+  //   message: "Docs pages",
+  //   description: "The ARIA label for the docs pagination"
+  // });
   const {
     siteConfig: { customFields: { apiProxyUrl } }
   } = useDocusaurusContext();
@@ -49,10 +54,12 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
         {!!viewCount &&
           <span className={"view-count"}>{viewCount} 人学过 .</span>
         }
-        <span className={"updated-at"}>更新于 {updatedAt}</span>
+        <span className={"updated-at"}> {translate({
+          id: "article.meta.updated_at"
+        }, { datetime: updatedAt })}</span>
       </div>
       <div className="actions">
-        <div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection} >
+        <div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection}>
           <div className="copy-link" />
         </div>
       </div>
