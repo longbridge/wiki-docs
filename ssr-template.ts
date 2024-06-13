@@ -30,6 +30,6 @@ export function genSSRTemplate(ossEnv: string) {
   const assetBaseURL =
     ossEnv === "/"
       ? ossEnv
-      : `https://assets.lbkrs.com/github/${ossEnv}/longportapp.com/learn/wiki/`;
+      : `https://assets.lbkrs.com/github/${ossEnv}/longportapp.com/learn/wiki<%= it.baseUrl %>`;
   return ssrTemplate.toString().replace(/<%= it\.baseUrl %>/g, assetBaseURL);
 }
