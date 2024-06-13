@@ -12,7 +12,7 @@ const i18n = require("./i18n/config");
 
 
 const isDev = process.env.NODE_ENV !== "production";
-const targetPortalPath = process.env.Proxy === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
+const targetPortalPath = process.env.PROXY === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
 const localAPIProxyPath = "/dev-proxy";
 const apiProxyUrl = `${isDev ? localAPIProxyPath : targetPortalPath}/api/forward`;
 
