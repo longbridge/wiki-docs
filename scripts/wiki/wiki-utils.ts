@@ -1,6 +1,5 @@
 import { IWiki } from "../../types.d";
 import dayjs from "dayjs";
-import path from "path";
 
 /**
  * 删除所有 HTML 标签
@@ -42,7 +41,11 @@ export class WikiUtils {
   }
 
   get pageSlug() {
-    return `/${this.locale}/learn/wiki/${this.wiki.slug}`;
+    if (this.locale === "en") {
+      return `/${this.locale}/learn/wiki/${this.wiki.slug}`;
+    } else {
+      return `/learn/wiki/${this.wiki.slug}`;
+    }
   }
 
   static convertHTMLStyleToJSXStyle(htmlString) {
