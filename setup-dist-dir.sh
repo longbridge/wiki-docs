@@ -1,5 +1,6 @@
 # step 1 create basic dirs
 mv ./dist/sitemap.xml ./dist/en/
+mv ./dist/learn.html ./dist/en/
 mv ./dist/404.html ./dist/en/
 mv ./dist/.nojekyll ./dist/en/
 
