@@ -20,6 +20,7 @@
 @tailwind utilities;
 body {
   color: #222;
+  @apply bg-[#f8f9fa];
 }
 
 .theme-doc-sidebar-menu {
@@ -137,4 +138,8 @@ body {
 
 .pagination-nav {
   margin-top: 100px !important;
+}
+
+.theme-doc-markdown.markdown {
+  @apply bg-[#f8f9fa];
 }

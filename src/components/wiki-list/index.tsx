@@ -11,14 +11,14 @@ export const WikiList: FC = () => {
       {wikis.map((rawWiki: any) => {
         const wiki = WikiUtils.toPage(rawWiki, locale);
         return <li key={wiki.id}
-          className="relative flex flex-col mt-6 text-gray-700 bg-slate-50 shadow-md bg-clip-border rounded-xl w-full md:w-80">
+          className="relative flex flex-col mt-6 text-black bg-white shadow-md bg-clip-border rounded-xl w-full md:w-80">
           <article className="p-4">
             <h5
-              className="block mb-2 font-sans text-xl  font-semibold leading-snug tracking-normal text-blue-gray-900">
+              className="block mb-2 text-xl leading-snug tracking-normal">
               <a href={`/${locale}/learn/wiki/${wiki.slug}`}>{wiki.title}</a>
             </h5>
             <p
-              className="font-light leading-relaxed line-clamp-3">
+              className="leading-relaxed line-clamp-3">
               {wiki.liteDesc}
             </p>
           </article>
