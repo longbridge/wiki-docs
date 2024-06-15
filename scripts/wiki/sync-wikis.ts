@@ -27,13 +27,16 @@ export async function generateWikiMD(wiki: IWiki) {
     } else {
       docDir = `${projectRoot}/i18n/${locale}/docusaurus-plugin-content-docs/current/learn/wiki`;
     }
-
     const docPath = `${docDir}/${wiki.slug}.mdx`;
     const dirname = path.dirname(docPath);
     if (!fs.existsSync(dirname)) {
       fs.mkdirSync(dirname, { recursive: true });
     }
-    console.log(`-> create doc: ${docPath}`);
+    if (fs.existsSync(docPath)) {
+      console.log(`==> update doc: ${docPath}`);
+    } else {
+      console.log(`==> create doc: ${docPath}`);
+    }
     var compiled = _template(template);
     const docContent = compiled(wikiUtils.toPage());
     fs.writeFileSync(docPath, docContent);
@@ -53,7 +56,7 @@ export async function updateLatestWiki(limit = 100) {
   const content_updated_at = await fetchLastUpdatedValue();
   await fetchWikiList(wikis, content_updated_at, limit);
   wikis = uniqBy(wikis, "slug");
-  console.log('--> found matched wikis:', wikis.length)
+  console.log("--> found matched wikis:", wikis.length);
   const theLatestWiki = wikis[0];
   if (theLatestWiki) {
     fetchLastUpdatedValue(theLatestWiki.content_updated_at);
