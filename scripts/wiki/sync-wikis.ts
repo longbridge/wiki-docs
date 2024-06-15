@@ -1,10 +1,7 @@
-/*
- * 1. read template file from ./ template.md
- * 2. use Mustache to render template with wiki data
- * 3. use props wiki with IWiki type data to generate new wiki file location at /docs/locale/[wiki.slug].md
- * */
-
+import { fetchLastUpdatedValue } from "./utils";
+import { fetchWikiList } from "./fetch-wikis";
 import { WikiUtils } from "./wiki-utils";
+import { uniqBy } from "lodash";
 
 const _template = require("lodash.template");
 
@@ -12,15 +9,6 @@ const fs = require("fs");
 const path = require("path");
 import { IWiki, LocaleEnums } from "../../types.d";
 
-function escapeHtml(str) {
-  return !/[<>&"']/.test(str)
-    ? str
-    : str
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll("\"", "&quot;");
-}
 
 const projectRoot = path.resolve(__dirname, "../../");
 const template = fs.readFileSync(
@@ -57,3 +45,27 @@ export async function generateWikiMD(wiki: IWiki) {
     console.error(`--> generate wiki ${wiki.slug}  error:`, JSON.stringify(e));
   }
 }
+
+// wiki memos
+let wikis = [];
+
+export async function updateLatestWiki(limit = 100) {
+  const content_updated_at = await fetchLastUpdatedValue();
+  await fetchWikiList(wikis, content_updated_at, limit);
+  wikis = uniqBy(wikis, "slug");
+  console.log('--> found matched wikis:', wikis.length)
+  const theLatestWiki = wikis[0];
+  if (theLatestWiki) {
+    fetchLastUpdatedValue(theLatestWiki.content_updated_at);
+  }
+  // wikis.forEach(async (rawWiki) => {
+  //   const { slug } = rawWiki;
+  //   try {
+  //     await generateWikiMD(rawWiki);
+  //   } catch (e) {
+  //     console.error(`generate wiki: ${slug} error:`, JSON.stringify(e));
+  //   }
+  // });
+}
+
+updateLatestWiki();

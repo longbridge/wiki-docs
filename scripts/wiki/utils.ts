@@ -1,28 +1,38 @@
+import dayjs from "dayjs";
+
 const fs = require("fs");
 const path = require("path");
 
 const projectRoot = path.resolve(__dirname, "..", "..", "..");
-const tmpDir = path.resolve(projectRoot, "tmp");
 const forceRefresh = process.env.FORCE_UPDATE === "true";
 
-export async function fetchLastUpdatedValue(content_updated_at: string = null) {
-  const tmpFilePath = path.join(tmpDir, "last_updated_at.txt");
+export async function fetchLastUpdatedValue(content_updated_at = 0) {
+  const tmpFilePath = path.join(projectRoot, "last_updated_at.txt");
 
   try {
     // content_updated_at empty mean's need read prev last updated_at value
     if (!content_updated_at) {
       // If the FORCE_UPDATE environment variable is set to true, return an empty string
-      if (forceRefresh) return;
+      if (forceRefresh) {
+        console.log("--> use force update wikis");
+        return 0;
+      } else {
+        // Read the last updated timestamp from the temporary file
+        const latestDate = await readLastUpdatedAt(tmpFilePath);
+        console.log("--> use latest update date:", dayjs(latestDate * 1000).format("YYYY-MM-DD HH:mm:ss"));
+        return latestDate;
+      }
 
-      // Read the last updated timestamp from the temporary file
-      return await readLastUpdatedAt(tmpFilePath);
+
     } else {
       // Write the current updated timestamp to the temporary file
+      console.log("--> write latest update date:", dayjs(content_updated_at * 1000).format("YYYY-MM-DD HH:mm:ss"));
       await writeLastUpdatedAt(tmpFilePath, content_updated_at);
       return content_updated_at;
     }
   } catch (error) {
     console.error("Error fetching last updated value:", error);
+    return 0;
     throw error;
   }
 }

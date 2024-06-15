@@ -3,7 +3,7 @@ import * as fs from "node:fs";
 import path from "path";
 
 const projectRoot = path.resolve(__dirname, "../../");
-async function generateIndexPage() {
+async function genHomePageConfig() {
   const wikis = []
   await fetchWikiList(wikis);
 
@@ -14,4 +14,4 @@ async function generateIndexPage() {
   );
 }
 
-generateIndexPage();
+genHomePageConfig();
