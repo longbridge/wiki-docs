@@ -25,37 +25,27 @@ jobs:
         run: |
           rm -f last_updated_at.txt
 
+      - uses: oven-sh/setup-bun@v1
       - name: Start export latest wiki pages
         env:
           API_BASE_URL: https://m.lbkrs.com
         run: |
-          yarn install
-          bun run setup
+          bun install 
+          cd scripts/wiki && bun run sync-wiki.ts
 
       - name: Setup Git
         run: |
-          git config --global user.name "Longbridge Whale docs bot"
-          git config --global user.email "longbridge-whale-docs@users.noreply.github.com"
+          git config --global user.name "LongPort wiki bot"
+          git config --global user.email "longport-wiki@users.noreply.github.com"
 
       - name: Create PR for locales/ updates
         run: |
           BRANCH_NAME=update-pages-$(date +'%Y%m%d%H%M%S')
           git checkout -b $BRANCH_NAME
           git status
-          git add locales/
-          git add feishu-pages/docs.json
-          git add feishu-pages/docs-zh-cn.json
-          git commit -m "Commit feishu updated pages to repo"
+          git add .
+          git commit -m "Commit wiki updated pages to repo"
           git push origin $BRANCH_NAME
 
           # Create Pull Request
-          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d '{"title":"Update feishu pages","head":"'$BRANCH_NAME'","base":"main"}' https://api.github.com/repos/${{ github.repository }}/pulls
-
-      - name: Push feishu-pages/.cache to main branch
-        run: |
-          git checkout main
-          git add feishu-pages/.cache
-          git config --global user.name "Longbridge Whale docs bot"
-          git config --global user.email "longbridge-whale-docs@users.noreply.github.com"
-          git commit -m "Update feishu-pages/.cache" || echo "No changes to commit"
-          git push origin main
+          curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d '{"title":"Update wiki pages","head":"'$BRANCH_NAME'","base":"main"}' https://api.github.com/repos/${{ github.repository }}/pulls
