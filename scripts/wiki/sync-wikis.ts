@@ -58,14 +58,14 @@ export async function updateLatestWiki(limit = 100) {
   if (theLatestWiki) {
     fetchLastUpdatedValue(theLatestWiki.content_updated_at);
   }
-  // wikis.forEach(async (rawWiki) => {
-  //   const { slug } = rawWiki;
-  //   try {
-  //     await generateWikiMD(rawWiki);
-  //   } catch (e) {
-  //     console.error(`generate wiki: ${slug} error:`, JSON.stringify(e));
-  //   }
-  // });
+  wikis.forEach(async (rawWiki) => {
+    const { slug } = rawWiki;
+    try {
+      await generateWikiMD(rawWiki);
+    } catch (e) {
+      console.error(`generate wiki: ${slug} error:`, JSON.stringify(e));
+    }
+  });
 }
 
 updateLatestWiki();
