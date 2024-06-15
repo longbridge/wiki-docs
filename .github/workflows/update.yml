@@ -25,6 +25,11 @@ jobs:
         run: |
           rm -f last_updated_at.txt
 
+      - name: Set timezone to Asia/Shanghai
+        uses: sgharms/set-timezone@v1
+        with:
+          timezone: Asia/Shanghai
+
       - uses: oven-sh/setup-bun@v1
       - name: Start export latest wiki pages
         env:
