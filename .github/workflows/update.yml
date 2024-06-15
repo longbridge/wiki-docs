@@ -31,7 +31,7 @@ jobs:
           API_BASE_URL: https://m.lbkrs.com
         run: |
           bun install 
-          cd scripts/wiki && bun run sync-wiki.ts
+          cd scripts/wiki && bun run sync-wikis.ts
 
       - name: Setup Git
         run: |
