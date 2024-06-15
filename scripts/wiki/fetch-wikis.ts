@@ -13,7 +13,7 @@ let retryTimes = 0;
 export async function fetchWikiList(memo: IWiki[], updated_at = null, limit = 100) {
   console.log("--> fetch wikis from:", dayjs(updated_at * 1000).format("YYYY-MM-DD HH:mm:ss"));
   const currentPath = `api/forward/social/wiki/lists?updated_at=${updated_at}&limit=${limit}`;
-  const currentURL = `${apiBaseURL}/currentPath`;
+  const currentURL = `${apiBaseURL}/${currentPath}`;
   try {
     console.log("--> fetch url: ", currentPath);
     const resp = await axios.get(currentURL);
