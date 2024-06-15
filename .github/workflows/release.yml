@@ -2,6 +2,7 @@ name: Deploy Release
 on:
   push:
     branches:
+      - main
       - release
 
 concurrency:

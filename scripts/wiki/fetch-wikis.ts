@@ -9,20 +9,22 @@ function delay(ms) {
 }
 
 let retryTimes = 0;
+
 export async function fetchWikiList(memo: IWiki[], updated_at = null, limit = 100) {
-  console.log('--> fetch wikis from:', dayjs(updated_at * 1000).format('YYYY-MM-DD HH:mm:ss'));
-  const currentURL = `${apiBaseURL}/api/forward/social/wiki/lists?updated_at=${updated_at}&limit=${limit}`;
+  console.log("--> fetch wikis from:", dayjs(updated_at * 1000).format("YYYY-MM-DD HH:mm:ss"));
+  const currentPath = `api/forward/social/wiki/lists?updated_at=${updated_at}&limit=${limit}`;
+  const currentURL = `${apiBaseURL}/currentPath`;
   try {
-    console.log('--> fetch url: ', currentURL)
+    console.log("--> fetch url: ", currentPath);
     const resp = await axios.get(currentURL);
-    if(!resp.data){
-      if(retryTimes < 3){
+    if (!resp.data) {
+      if (retryTimes < 3) {
         retryTimes += 1;
-        console.log(`[warning] found wikis length = 0 now delay 1000ms retry request ${currentURL} times ${retryTimes}`,)
-        await delay(1000)
+        console.log(`[warning] found wikis length = 0 now delay 1000ms retry request ${currentPath} times ${retryTimes}`);
+        await delay(1000);
         await fetchWikiList(memo, updated_at, limit);
       }
-    }else{
+    } else {
       retryTimes = 0;
     }
     const {
@@ -36,7 +38,7 @@ export async function fetchWikiList(memo: IWiki[], updated_at = null, limit = 10
       await fetchWikiList(memo, lastWiki.content_updated_at, limit);
     }
   } catch (error) {
-    console.error(`Failed to fetch ${currentURL} error:`, error);
+    console.error(`Failed to fetch ${currentPath} error:`, error);
   }
   return memo;
 }
