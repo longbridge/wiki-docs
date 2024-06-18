@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { items as featuredItems } from '@site/featured-items.json';
 import { WikiUtils } from '@site/scripts/wiki/wiki-utils';
 import { useBasenameLocale } from '@site/src/utils';
-import wikis from '@site/tmp/index.config.json';
+import wikis from '@site/home-page.config.json';
 import './style.scss';
 
 const itemName = (item: any) =>

@@ -3,7 +3,6 @@ import { IWiki } from "@site/types";
 import dayjs from "dayjs";
 import { withQuery } from "ufo";
 import process from "node:process";
-import fs from "fs";
 
 const apiBaseURL = process.env.API_BASE_URL;
 
@@ -47,10 +46,10 @@ export async function fetchWikiList(memo: IWiki[], limit = 100, id = 0, last_upd
 
     memo.push(...wikis);
 
-    if (wikis.length) {
-      const lastWiki = wikis.pop();
-      await fetchWikiList(memo, limit, lastWiki.id, lastWiki.content_updated_at);
-    }
+    // if (wikis.length) {
+    //   const lastWiki = wikis.pop();
+    //   await fetchWikiList(memo, limit, lastWiki.id, lastWiki.content_updated_at);
+    // }
   } catch (error) {
     console.error(`Failed to fetch ${currentPath} error:`, error);
   }
