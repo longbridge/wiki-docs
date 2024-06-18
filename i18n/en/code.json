@@ -1,4 +1,7 @@
 {
+  "breadcrumbs.nav.home": {
+    "message": "Home"
+  },
   "article.meta.updated_at": {
     "message": "Last updated on {datetime}"
   },

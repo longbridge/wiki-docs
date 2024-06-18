@@ -48,6 +48,7 @@ export class WikiUtils {
     }
   }
 
+  // convert style="..." to style={...}
   static convertHTMLStyleToJSXStyle(htmlString) {
     return htmlString.replace(/style="([^"]*)"/g, (match, styleString) => {
       const styleObject = styleString
@@ -77,17 +78,28 @@ export class WikiUtils {
     return new WikiUtils(wiki, locale).toPage();
   }
 
+  static normalizeBRHTMLDOM(string) {
+    return string.replace(/<br>/g, "<br/>");
+  }
+
+  static normalizeMDXContent(content: string) {
+    let newContent = content;
+    newContent = WikiUtils.convertHTMLStyleToJSXStyle(newContent);
+    newContent = WikiUtils.normalizeBRHTMLDOM(newContent);
+    return newContent;
+  }
+
   toPage() {
     return {
       title: this.title,
       body: this.body,
       pageSlug: this.pageSlug,
       description: this.description,
-      jsxDesc: WikiUtils.convertHTMLStyleToJSXStyle(this.description),
-      jsxBody: WikiUtils.convertHTMLStyleToJSXStyle(this.body),
+      jsxDesc: WikiUtils.normalizeMDXContent(this.description),
+      jsxBody: WikiUtils.normalizeMDXContent(this.body),
       liteDesc: this.liteDesc,
       contentUpdatedAt: this.contentUpdatedAt,
-      ...this.wiki,
+      ...this.wiki
     };
   }
 }

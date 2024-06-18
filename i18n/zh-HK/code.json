@@ -1,4 +1,7 @@
 {
+  "breadcrumbs.nav.home": {
+    "message": "首頁"
+  },
   "article.meta.updated_at": {
     "message": "更新於 {datetime}"
   },

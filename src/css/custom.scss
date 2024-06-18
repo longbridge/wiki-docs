@@ -21,6 +21,9 @@
 body {
   color: #222;
   @apply bg-[#f8f9fa];
+  h1 {
+    text-transform: capitalize;
+  }
 }
 
 .theme-doc-sidebar-menu {

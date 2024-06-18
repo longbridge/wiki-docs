@@ -1,5 +1,8 @@
 {
-    "article.meta.updated_at": {
+  "breadcrumbs.nav.home": {
+    "message": "首页"
+  },
+  "article.meta.updated_at": {
     "message": "更新于 {datetime}"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {

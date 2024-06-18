@@ -5,12 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import Link from '@docusaurus/Link';
-import {translate} from '@docusaurus/Translate';
-import IconHome from '@theme/Icon/Home';
-
-import styles from './styles.module.css';
+import React from "react";
+import Link from "@docusaurus/Link";
+import { translate } from "@docusaurus/Translate";
 import { useBasenameLocale } from "@site/src/utils";
 
 export default function HomeBreadcrumbItem(): JSX.Element {
@@ -21,13 +18,15 @@ export default function HomeBreadcrumbItem(): JSX.Element {
     <li className="breadcrumbs__item">
       <Link
         aria-label={translate({
-          id: 'theme.docs.breadcrumbs.home',
-          message: 'Home page',
-          description: 'The ARIA label for the home page in the breadcrumbs',
+          id: "theme.docs.breadcrumbs.home",
+          message: "Home page",
+          description: "The ARIA label for the home page in the breadcrumbs"
         })}
         className="breadcrumbs__link"
         href={homeHref}>
-        <IconHome className={styles.breadcrumbHomeIcon} />
+        {translate({
+          id: "breadcrumbs.nav.home"
+        })}
       </Link>
     </li>
   );

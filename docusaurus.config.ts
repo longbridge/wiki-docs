@@ -116,7 +116,7 @@ const config: Config = {
               return item.url = item.url
                 .replace("zh-CN/zh-CN", "zh-CN")
                 .replace("en/en", "en")
-                .replace("zh-HK/zh-HK", "zh-HK")
+                .replace("zh-HK/zh-HK", "zh-HK");
             });
           }
         }
