@@ -59,9 +59,9 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
         }, { datetime: updatedAt })}</span>
       </div>
       <div className="actions">
-        <div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection}>
-          <div className="copy-link" />
-        </div>
+        {/*<div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection}>*/}
+        {/*  <div className="copy-link" />*/}
+        {/*</div>*/}
       </div>
     </div>
   );
