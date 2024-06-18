@@ -33,7 +33,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-photo-view": "^1.2.4",
-    "remove": "^0.1.5"
+    "remove": "^0.1.5",
+    "ufo": "^1.5.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.4.0",

@@ -1,6 +1,9 @@
 import axios from "axios";
 import { IWiki } from "@site/types";
 import dayjs from "dayjs";
+import { withQuery } from "ufo";
+import process from "node:process";
+import fs from "fs";
 
 const apiBaseURL = process.env.API_BASE_URL;
 
@@ -10,19 +13,25 @@ function delay(ms) {
 
 let retryTimes = 0;
 
-export async function fetchWikiList(memo: IWiki[], updated_at = null, limit = 100) {
-  console.log("--> fetch wikis from:", dayjs(updated_at * 1000).format("YYYY-MM-DD HH:mm:ss"));
-  const currentPath = `api/forward/social/wiki/lists?updated_at=${updated_at}&limit=${limit}`;
+export async function fetchWikiList(memo: IWiki[], limit = 100, id = 0, last_update_at = 0) {
+  console.log("--> fetch wikis from:", dayjs(last_update_at * 1000).format("YYYY-MM-DD HH:mm:ss"));
+  const queriesShow = {
+    id,
+    last_update_at,
+    limit
+  };
+  const queries = { ...queriesShow, token: process.env.API_SECRETS_TOKEN || "none" };
+  const currentPath = withQuery("api/forward/social/wiki/lists", queries);
   const currentURL = `${apiBaseURL}/${currentPath}`;
   try {
-    console.log("--> fetch url: ", currentPath);
+    console.log("--> fetch url: ", withQuery("api/forward/social/wiki/lists", queriesShow));
     const resp = await axios.get(currentURL);
     if (!resp.data) {
       if (retryTimes < 3) {
         retryTimes += 1;
         console.log(`[warning] found wikis length = 0 now delay 1000ms retry request ${currentPath} times ${retryTimes}`);
         await delay(1000);
-        await fetchWikiList(memo, updated_at, limit);
+        await fetchWikiList(memo, limit, id, last_update_at);
       }
     } else {
       retryTimes = 0;
@@ -31,11 +40,16 @@ export async function fetchWikiList(memo: IWiki[], updated_at = null, limit = 10
       data: { list: wikis } = { list: [] }
     } = resp.data || { data: { list: [] } };
 
+    // write temp response data to temp dirs
+    // const tempFilePath =`/tmp/wikis/${[id||0, last_update_at||0].join("-")}.json`
+    // console.log(`fetch wikis: ${wikis.length} generate temp file:`, tempFilePath)
+    // fs.writeFileSync(tempFilePath, JSON.stringify(wikis, null, 2));
+
     memo.push(...wikis);
 
     if (wikis.length) {
-      const lastWiki = wikis[0];
-      await fetchWikiList(memo, lastWiki.content_updated_at, limit);
+      const lastWiki = wikis.pop();
+      await fetchWikiList(memo, limit, lastWiki.id, lastWiki.content_updated_at);
     }
   } catch (error) {
     console.error(`Failed to fetch ${currentPath} error:`, error);

@@ -51,16 +51,17 @@ export async function generateWikiMD(wiki: IWiki) {
 
 // wiki memos
 let wikis = [];
-
 export async function updateLatestWiki(limit = 100) {
-  const content_updated_at = await fetchLastUpdatedValue();
-  await fetchWikiList(wikis, content_updated_at, limit);
+  const last_updated_at = await fetchLastUpdatedValue();
+  await fetchWikiList(wikis, limit, null, last_updated_at);
+  console.log("--> found wikis:", wikis.length);
   wikis = uniqBy(wikis, "slug");
-  console.log("--> found matched wikis:", wikis.length);
+  console.log("--> after uniq wikis:", wikis.length);
   const theLatestWiki = wikis[0];
   if (theLatestWiki) {
     fetchLastUpdatedValue(theLatestWiki.content_updated_at);
   }
+
   wikis.forEach(async (rawWiki) => {
     const { slug } = rawWiki;
     try {
