@@ -25,7 +25,7 @@ export default function DocRootLayoutMain({
       )}>
       <div
         className={clsx(
-          'container sm:px-4 md:px-0  mt-8 padding-top--md padding-bottom--lg',
+          'container sm:px-4 md:px-0 wiki-article-content mt-8 padding-top--md padding-bottom--lg',
           styles.docItemWrapper,
           hiddenSidebarContainer && styles.docItemWrapperEnhanced,
         )}>

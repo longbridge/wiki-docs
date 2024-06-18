@@ -1,14 +1,15 @@
 import { FC } from 'react';
 
-import { items as featuredItems } from '@site/featured-items.json';
+import featureConfig from '@site/featured-items.json';
 import { WikiUtils } from '@site/scripts/wiki/wiki-utils';
-import { useBasenameLocale } from '@site/src/utils';
+import { useBasenameLocale } from "@site/src/utils";
 import wikis from '@site/home-page.config.json';
 import './style.scss';
 
 const itemName = (item: any) =>
   item.name_locales['zh-CN'] || item.name_locales['en'];
 
+const featuredItems = Array.from(featureConfig.items || []);
 const featuredWikis = wikis.filter((item) =>
   featuredItems.includes(itemName(item))
 );
@@ -21,6 +22,7 @@ featuredWikis.sort((a, b) => {
 
 export const WikiList: FC = () => {
   const locale = useBasenameLocale();
+
   return (
     <ul className="wiki-list">
       {featuredWikis.map((rawWiki: any) => {
