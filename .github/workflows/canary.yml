@@ -1,12 +1,12 @@
 name: Deploy Canary
-
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches:
+      - main
+      - canary
 
 jobs:
   deploy_canary:
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'canary'
     name: build
     timeout-minutes: 30
     runs-on: ubuntu-latest
