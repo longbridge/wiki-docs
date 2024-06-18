@@ -2,12 +2,12 @@ import { fetchLastUpdatedValue } from "./utils";
 import { fetchWikiList } from "./fetch-wikis";
 import { WikiUtils } from "./wiki-utils";
 import { uniqBy } from "lodash";
-
 const _template = require("lodash.template");
 
 const fs = require("fs");
 const path = require("path");
 import { IWiki, LocaleEnums } from "../../types.d";
+import { post } from "../../src/api";
 
 
 const projectRoot = path.resolve(__dirname, "../../");
@@ -23,9 +23,9 @@ export async function generateWikiMD(wiki: IWiki) {
 
     let docDir = "";
     if (locale === "en") {
-      docDir = `${projectRoot}/docs/learn/wiki`;
+      docDir = `${projectRoot}/docs/learn`;
     } else {
-      docDir = `${projectRoot}/i18n/${locale}/docusaurus-plugin-content-docs/current/learn/wiki`;
+      docDir = `${projectRoot}/i18n/${locale}/docusaurus-plugin-content-docs/current/learn`;
     }
     const docPath = `${docDir}/${wiki.slug}.mdx`;
     const dirname = path.dirname(docPath);
@@ -51,6 +51,7 @@ export async function generateWikiMD(wiki: IWiki) {
 
 // wiki memos
 let wikis = [];
+
 export async function updateLatestWiki(limit = 100) {
   const last_updated_at = await fetchLastUpdatedValue();
   await fetchWikiList(wikis, limit, null, last_updated_at);
