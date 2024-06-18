@@ -1,12 +1,19 @@
+.wiki-list {
+  @apply ps-0 py-5 md:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8;
+}
 .wiki-item {
-  @apply relative flex flex-col mt-6 text-black bg-white hover:bg-slate-200 shadow bg-clip-border rounded-md w-full md:w-80 py-2 px-3;
+  @apply relative flex flex-col text-black bg-white hover:shadow-md shadow bg-clip-border rounded-md w-full md:w-80 py-2 px-3 cursor-default;
 
   .item-title {
-    @apply text-gray-800 block mb-2 text-xl leading-snug tracking-normal;
+    @apply text-gray-800 block mb-2 text-xl font-semibold leading-snug tracking-normal uppercase;
+  }
+
+  .item-sub-title {
+    @apply text-gray-700 block mb-2 text-sm font-normal leading-snug tracking-normal uppercase;
   }
 
   .item-desc {
-    @apply leading-relaxed line-clamp-3;
+    @apply leading-relaxed line-clamp-3 text-gray-800 text-sm cursor-default;
   }
   p {
     @apply m-0;

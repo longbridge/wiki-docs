@@ -8,11 +8,7 @@ import './style.scss';
 export const WikiList: FC = () => {
   const locale = useBasenameLocale();
   return (
-    <ul
-      className={
-        'ps-0 wiki-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'
-      }
-    >
+    <ul className="wiki-list">
       {wikis.map((rawWiki: any) => {
         const wiki = WikiUtils.toPage(rawWiki, locale);
         return (
@@ -21,6 +17,9 @@ export const WikiList: FC = () => {
               <h5 className="item-title">
                 <a href={`/${locale}/learn/wiki/${wiki.slug}`}>{wiki.title}</a>
               </h5>
+              {locale !== 'en' && (
+                <div className="item-sub-title">{wiki.en_title}</div>
+              )}
               <p className="item-desc">{wiki.liteDesc}</p>
             </article>
           </li>
