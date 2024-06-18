@@ -46,9 +46,9 @@ export class WikiUtils {
 
   get pageSlug() {
     if (this.locale === 'en') {
-      return `/${this.locale}/learn/wiki/${this.wiki.slug}`;
+      return `/${this.locale}/learn/${this.wiki.slug}`;
     } else {
-      return `/learn/wiki/${this.wiki.slug}`;
+      return `/learn/${this.wiki.slug}`;
     }
   }
 

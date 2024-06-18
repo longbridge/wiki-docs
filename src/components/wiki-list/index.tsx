@@ -29,7 +29,7 @@ export const WikiList: FC = () => {
           <li key={wiki.id} className="wiki-item">
             <article className="p-4">
               <h5 className="item-title">
-                <a href={`/${locale}/learn/wiki/${wiki.slug}`}>{wiki.title}</a>
+                <a href={`/${locale}/learn/${wiki.slug}`}>{wiki.title}</a>
               </h5>
               {locale !== 'en' && (
                 <div className="item-sub-title">{wiki.en_title}</div>

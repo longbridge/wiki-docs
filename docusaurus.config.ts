@@ -147,7 +147,7 @@ const config: Config = {
         title: "",
         logo: {
           alt: "LongPort",
-          href: openapiDomain,
+          href: "/learn",
           target: "_self",
           src: "https://pub.lbkrs.com/files/202211/BoUn1BSQuAHDX4GY/logo-with-title.svg"
         },
