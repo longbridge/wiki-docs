@@ -21,14 +21,15 @@ export async function fetchWikiList(memo: IWiki[], limit = 100, id = 0, last_upd
   };
   const queries = { ...queriesShow, token: process.env.API_SECRETS_TOKEN || "none" };
   const currentPath = withQuery("api/forward/social/wiki/lists", queries);
+  const loggerPath = withQuery("api/forward/social/wiki/lists", queriesShow)
   const currentURL = `${apiBaseURL}/${currentPath}`;
   try {
-    console.log("--> fetch url: ", withQuery("api/forward/social/wiki/lists", queriesShow));
+    console.log("--> fetch url: ", loggerPath);
     const resp = await axios.get(currentURL);
     if (!resp.data) {
       if (retryTimes < 3) {
         retryTimes += 1;
-        console.log(`[warning] found wikis length = 0 now delay 1000ms retry request ${currentPath} times ${retryTimes}`);
+        console.log(`[warning] found wikis length = 0 now delay 1000ms retry request ${loggerPath} times ${retryTimes}`);
         await delay(1000);
         await fetchWikiList(memo, limit, id, last_update_at);
       }
@@ -51,7 +52,7 @@ export async function fetchWikiList(memo: IWiki[], limit = 100, id = 0, last_upd
     //   await fetchWikiList(memo, limit, lastWiki.id, lastWiki.content_updated_at);
     // }
   } catch (error) {
-    console.error(`Failed to fetch ${currentPath} error:`, error);
+    console.error(`Failed to fetch ${loggerPath} error:`, error);
   }
   return memo;
 }
