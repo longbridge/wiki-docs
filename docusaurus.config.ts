@@ -19,6 +19,7 @@ const ossEnv = isDev ? "/" : proxy;
 const targetPortalPath = proxy === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
 const localAPIProxyPath = "/dev-proxy";
 const apiProxyUrl = `${isDev ? localAPIProxyPath : targetPortalPath}/api/forward`;
+const portAIProxyUrl = isDev ? 'http://localhost:4040/dev-proxy' : undefined;
 
 const config: Config = {
   title: "LongPort wiki",
@@ -34,6 +35,7 @@ const config: Config = {
   favicon: "https://pub.lbkrs.com/static/offline/202211/qohHsXzN9qtQ23ox/longport_favicon.png",
   customFields: {
     isDev,
+    portAIProxyUrl,
     apiProxyUrl
   },
   headTags: [

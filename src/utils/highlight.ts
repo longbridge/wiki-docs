@@ -12,7 +12,7 @@ export const loadScript = (src) => {
 let highlightIsLoaded = false
 export const loadHighlight = async () => {
   if (!highlightIsLoaded) {
-    await loadScript('https://assets.lbkrs.com/uploads/e6eebe73-a777-4dc5-b682-a80db1af5554/highlight.js')
+    await loadScript('https://assets.lbkrs.com/uploads/c6e6f6e9-78ab-42f1-942d-111bdb58d758/index.umd.js')
   }
   highlightIsLoaded = true
   const xHighlights = document.querySelectorAll('.doc-highlight')
