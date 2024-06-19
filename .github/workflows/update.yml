@@ -34,6 +34,7 @@ jobs:
       - name: Start export latest wiki pages
         env:
           API_BASE_URL: https://m.lbkrs.com
+          API_SECRETS_TOKEN: ${{ secrets.API_SECRETS_TOKEN }}
         run: |
           bun install 
           cd scripts/wiki && bun run sync-wikis.ts
