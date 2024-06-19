@@ -28,6 +28,12 @@ jobs:
           node-version: 18
           cache: yarn
 
+      - name: Webpack cache
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules/.cache
+          key: ${{ runner.os }}-webpack-cache
+
       - name: install dependency npm
         run: yarn
 
