@@ -8,7 +8,6 @@ const forceRefresh = process.env.FORCE_UPDATE === "true";
 
 export async function fetchLastUpdatedValue(content_updated_at = 0) {
   const tmpFilePath = path.join(projectRoot, "last_updated_at.txt");
-  console.log('fetchLastUpdatedValue-11', tmpFilePath)
 
   try {
     // content_updated_at empty mean's need read prev last updated_at value
