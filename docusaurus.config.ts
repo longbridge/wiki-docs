@@ -5,7 +5,6 @@ const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import process from "node:process";
-import { baseURLPrefix } from "./src/constant";
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const openapiDomain = "https://open.longportapp.com";
@@ -19,12 +18,12 @@ const ossEnv = isDev ? "/" : proxy;
 const targetPortalPath = proxy === "canary" ? "https://m.longbridge.xyz" : "https://m.lbkrs.com";
 const localAPIProxyPath = "/dev-proxy";
 const apiProxyUrl = `${isDev ? localAPIProxyPath : targetPortalPath}/api/forward`;
-const portAIProxyUrl = isDev ? 'http://localhost:4040/dev-proxy' : undefined;
+const portAIProxyUrl = isDev ? "http://localhost:4040/dev-proxy" : undefined;
 
 const config: Config = {
-  title: "LongPort wiki",
+  title: "LongPort",
   url: "https://longportapp.com",
-  baseUrl: baseURLPrefix,
+  baseUrl: "/",
   organizationName: "longportapp",
   projectName: "wiki-docs",
   baseUrlIssueBanner: false,
@@ -96,8 +95,6 @@ const config: Config = {
       };
     }
   ],
-
-
   presets: [
     [
       "classic",
@@ -117,8 +114,10 @@ const config: Config = {
             return await items.map((item) => {
               return item.url = item.url
                 .replace("zh-CN/zh-CN", "zh-CN")
+                .replace("zh-CN/en/learn", "zh-CN/learn")
                 .replace("en/en", "en")
-                .replace("zh-HK/zh-HK", "zh-HK");
+                .replace("zh-HK/zh-HK", "zh-HK")
+                .replace("zh-HK/en/learn", "zh-HK/learn");
             });
           }
         }
@@ -126,7 +125,6 @@ const config: Config = {
       } satisfies Preset.Options
     ]
   ],
-
   themeConfig:
   /** @type {import("@docusaurus/preset-classic").ThemeConfig} */
     {
@@ -157,9 +155,7 @@ const config: Config = {
           {
             to: openapiDomain,
             position: "left",
-            target: "_self",
-            label: "开发者认证",
-            activeBaseRegex: "^/$"
+            label: "开发者认证"
           },
           {
             to: communityDomain,

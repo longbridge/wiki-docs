@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 const fs = require("fs");
 const path = require("path");
 
-const projectRoot = path.resolve(__dirname, "..", "..", "..");
+const projectRoot = path.resolve(__dirname, "..", "..");
 const forceRefresh = process.env.FORCE_UPDATE === "true";
 
 export async function fetchLastUpdatedValue(content_updated_at = 0) {

@@ -60,7 +60,7 @@ export async function updateLatestWiki(limit = 100) {
   console.log("--> after uniq wikis:", wikis.length);
   const theLatestWiki = wikis[0];
   if (theLatestWiki) {
-    fetchLastUpdatedValue(theLatestWiki.content_updated_at);
+    await fetchLastUpdatedValue(theLatestWiki.content_updated_at);
   }
 
   wikis.forEach(async (rawWiki) => {
