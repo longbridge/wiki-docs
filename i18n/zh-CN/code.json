@@ -1,4 +1,10 @@
 {
+  "meta_title": {
+    "message": "LongPort 與高價值投資者一起研究和交易"
+  },
+  "meta_desc": {
+    "message": "LongPort 是一個由多家券商用戶構成的公共平台，具備豐富的多市場交易能力、研究工具、以及一個高信息密度的投資者交流社區"
+  },
   "breadcrumbs.nav.home": {
     "message": "首页"
   },
