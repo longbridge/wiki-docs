@@ -1,4 +1,10 @@
 {
+  "meta_title": {
+    "message": "LongPort - Research and trade with high-value investors"
+  },
+  "meta_desc": {
+    "message": "LongPort is a public platform comprised of multiple brokerage users, offering rich multi-market trading capabilities, investment research tools and a high information density community discussion board."
+  },
   "breadcrumbs.nav.home": {
     "message": "Home"
   },
