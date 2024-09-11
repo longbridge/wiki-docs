@@ -3,13 +3,12 @@ import axios, { AxiosInstance, ResponseType } from "axios";
 const defaultOptions = {
   timeout: 60 * 1000,
   responseType: "json" as ResponseType,
-  withCredentials: true
+  withCredentials: true,
 };
-
 
 const axiosInstance: AxiosInstance = axios.create(defaultOptions);
 axiosInstance.interceptors.response.use(
-  response => {
+  (response) => {
     const res = response.data;
 
     // code === 0 为正常返回
@@ -24,15 +23,21 @@ axiosInstance.interceptors.response.use(
     // 其它未知错误，原样返回
     return Promise.reject(res);
   },
-  error => {
+  (error) => {
     return Promise.reject(error);
   }
 );
 export function post(url, params = {}) {
   return axiosInstance.request({
-      url,
-      method: "post",
-      params
-    }
-  );
+    url,
+    method: "post",
+    params,
+  });
+}
+export function get(url, params = {}) {
+  return axiosInstance.request({
+    url,
+    method: "GET",
+    params,
+  });
 }
