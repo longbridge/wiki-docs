@@ -9,6 +9,7 @@ import React from "react";
 import clsx from "clsx";
 import { useDocsSidebar } from "@docusaurus/theme-common/internal";
 import type { Props } from "@theme/DocRoot/Layout/Main";
+import Footer from "@site/src/components/footer";
 
 import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -33,13 +34,14 @@ export default function DocRootLayoutMain({
     >
       <div
         className={clsx(
-          "container sm:px-4 md:px-0 wiki-article-content mt-8 padding-top--md padding-bottom--lg",
+          "container sm:px-4 md:px-0 wiki-article-content mt-8 padding-top--md padding-bottom--lg flex flex-col justify-between",
           styles.docItemWrapper,
           hiddenSidebarContainer && styles.docItemWrapperEnhanced
         )}
         data-proxy={portAIProxyUrl}
       >
         {children}
+        <Footer />
       </div>
     </main>
   );
