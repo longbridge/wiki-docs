@@ -20,7 +20,7 @@
 @tailwind utilities;
 body {
   color: #222;
-  @apply bg-[#f8f9fa];
+  @apply bg-[#fff];
   h1 {
     text-transform: capitalize;
   }
@@ -134,6 +134,7 @@ body {
 }
 
 .main-wrapper {
+  overflow-x: hidden;
   .container {
     max-width: 780px;
   }
@@ -144,5 +145,5 @@ body {
 }
 
 .theme-doc-markdown.markdown {
-  @apply bg-[#f8f9fa];
+  @apply bg-[#fff];
 }
