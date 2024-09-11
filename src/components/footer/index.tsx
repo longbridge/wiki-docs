@@ -154,7 +154,6 @@ const getBasePath = () => {
 };
 const Footer: React.FC = () => {
   const locale = useDefaultLocale() || "en";
-  console.log(window.location);
   let basePath = getBasePath();
 
   const renderLinksMap = [...LinksMap];
