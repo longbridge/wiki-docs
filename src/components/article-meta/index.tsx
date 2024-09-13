@@ -7,6 +7,7 @@ import { useDefaultLocale } from "@site/src/utils";
 interface IArticleMetaProps {
   updatedAt: string | null;
   id: number;
+  alias: string;
 }
 
 const LocalesMap = {
@@ -28,7 +29,7 @@ const LocalesMap = {
 };
 
 export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
-  const { updatedAt, id } = props;
+  const { updatedAt, id, alias } = props;
   const [viewCount, setViewCount] = useState(0);
   const [AIContent, setAIContent] = useState("");
   const [aiGen, setAIGen] = useState(false);
@@ -39,6 +40,14 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
   //   message: "Docs pages",
   //   description: "The ARIA label for the docs pagination"
   // });
+
+  let aliasArray = [];
+  try {
+    aliasArray = JSON.parse(alias);
+  } catch (error) {
+    console.log("🚀 ~ error:", error);
+  }
+
   const {
     siteConfig: {
       customFields: { apiProxyUrl },
@@ -87,30 +96,41 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
   }, []);
 
   return (
-    <div className={"article-meta flex items-center justify-between text-sm"}>
-      <div className="info">
-        {!!viewCount && (
-          <span className={"view-count"}>
-            {viewCount} {LocalesMap.peopleLearned[locale]} .
-          </span>
-        )}
-        <span className={"updated-at"}>
-          {" "}
-          {translate(
-            {
-              id: "article.meta.updated_at",
-            },
-            { datetime: updatedAt }
+    <>
+      {aliasArray && aliasArray.length > 0 && (
+        <div className="alias flex items-center space-x-1 text-gray-500 mb-2 text-sm">
+          {aliasArray.map((a, i) => (
+            <>
+              <strong key={i}>{a}</strong>
+              {i !== aliasArray.length - 1 && <span key={`${i}_split`}>/</span>}
+            </>
+          ))}
+        </div>
+      )}
+      <div className={"article-meta flex items-center justify-between text-sm"}>
+        <div className="info">
+          {!!viewCount && (
+            <span className={"view-count"}>
+              {viewCount} {LocalesMap.peopleLearned[locale]} .
+            </span>
           )}
-        </span>
-      </div>
-      <div className="actions">
-        {/*<div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection}>*/}
-        {/*  <div className="copy-link" />*/}
-        {/*</div>*/}
+          <span className={"updated-at"}>
+            {" "}
+            {translate(
+              {
+                id: "article.meta.updated_at",
+              },
+              { datetime: updatedAt }
+            )}
+          </span>
+        </div>
+        <div className="actions">
+          {/*<div className="copy-section" id={"copy_trigger"} onClick={onClickCopySection}>*/}
+          {/*  <div className="copy-link" />*/}
+          {/*</div>*/}
 
-        {/* 没有 AI 内容并且没点击过生成 */}
-        {/* {!AIContent && aiGen && (
+          {/* 没有 AI 内容并且没点击过生成 */}
+          {/* {!AIContent && aiGen && (
           <div className="text-xs">{LocalesMap.aiGenUnderReview[locale]}</div>
         )}
         {!AIContent && !aiGen && (
@@ -128,7 +148,8 @@ export const ArticleMeta: FC<IArticleMetaProps> = (props) => {
             </div>
           </div>
         )} */}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
