@@ -47,10 +47,15 @@ export async function fetchWikiList(memo: IWiki[], limit = 100, id = 0, last_upd
 
     memo.push(...wikis);
 
-    // if (wikis.length) {
-    //   const lastWiki = wikis.pop();
-    //   await fetchWikiList(memo, limit, lastWiki.id, lastWiki.content_updated_at);
-    // }
+    if (wikis.length) {
+      const lastWiki = wikis.pop();
+      await fetchWikiList(
+        memo,
+        limit,
+        lastWiki.id,
+        lastWiki.content_updated_at
+      );
+    }
   } catch (error) {
     console.error(`Failed to fetch ${loggerPath} error:`, error);
   }
