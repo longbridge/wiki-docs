@@ -5,11 +5,14 @@ id: "100903"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # 時間衰減
 
-<ArticleMeta id={100903} updatedAt={'2023-09-26 13:58:51'} />
+<ArticleMeta id={100903} updatedAt={'2023-09-26 13:58:51'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 時間衰減是指由於時間的推移導致期權合同價值下降的速率。當期權的到期時間越近，時間衰減加速，因為從交易中獲利的時間越少。
+
+<AIContent content={`<p><strong>定義：</strong>時間衰減（Time Decay）是指隨着時間的推移，期權合同的價值逐漸下降的現象。時間衰減的速率在期權到期日臨近時會加速，因為交易者從期權中獲利的時間越來越少。</p><p><strong>起源：</strong>時間衰減的概念源自期權定價理論，特別是布萊克 - 舒爾斯模型（Black-Scholes Model），該模型在 1973 年由費舍爾·布萊克（Fischer Black）和邁倫·舒爾斯（Myron Scholes）提出。時間衰減是期權定價中的一個重要因素，因為它直接影響期權的時間價值。</p><p><strong>類別與特點：</strong>時間衰減主要影響期權的時間價值（Time Value），而不是內在價值（Intrinsic Value）。時間價值是期權價格中超過內在價值的部分，反映了期權在到期前可能變得有利可圖的潛力。隨着到期日的臨近，時間價值逐漸減少，最終在到期日歸零。<ul><li><strong>看漲期權（Call Option）：</strong>時間衰減對看漲期權的影響較大，因為看漲期權的持有者希望標的資產價格上漲。</li><li><strong>看跌期權（Put Option）：</strong>時間衰減對看跌期權的影響也很顯著，因為看跌期權的持有者希望標的資產價格下跌。</li></ul></p><p><strong>具體案例：</strong><ol><li><strong>案例一：</strong>假設你持有一份看漲期權，標的資產當前價格為 100 美元，行權價為 105 美元，期權到期時間為一個月。隨着時間的推移，如果標的資產價格沒有顯著上漲，期權的時間價值會逐漸減少，最終在到期日歸零。</li><li><strong>案例二：</strong>假設你持有一份看跌期權，標的資產當前價格為 100 美元，行權價為 95 美元，期權到期時間為一個月。如果標的資產價格沒有顯著下跌，期權的時間價值也會逐漸減少，最終在到期日歸零。</li></ol></p><p><strong>常見問題：</strong><ul><li><strong>時間衰減對期權交易者有何影響？</strong>時間衰減會導致期權價值逐漸減少，因此期權交易者需要在合適的時間點進行交易，以避免因時間衰減而遭受損失。</li><li><strong>如何計算時間衰減的速率？</strong>時間衰減的速率可以通過期權定價模型（如布萊克 - 舒爾斯模型）中的 “θ”（Theta）來計算，θ值表示期權價格隨時間變化的速率。</li></ul></p>`} id={100903} />

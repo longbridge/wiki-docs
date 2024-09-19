@@ -1,15 +1,18 @@
 ---
-title: "期權調整點差"
+title: "期權調整利差"
 slug: "/learn/option-adjusted-spread--102073"
 id: "102073"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
-# 期權調整點差
+# 期權調整利差
 
-<ArticleMeta id={102073} updatedAt={'2023-09-26 13:59:00'} />
+<ArticleMeta id={102073} updatedAt={'2024-09-12 18:36:16'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
-期權調整點差（OAS）是衡量固定收益證券利率與無風險回報利率之間的差距，並進行調整以考慮嵌入期權。通常，分析師使用國債收益率作為無風險利率。將此點差加到固定收益證券價格上，使得無風險債券價格與該債券相同。
+<p>期權調整利差（Option-Adjusted Spread, OAS）是衡量包含嵌入期權（如贖回期權或提前償付期權）的債券或證券相對於無風險利率的收益率差異。OAS 通過調整收益率以反映期權的價值，使投資者能夠更準確地評估債券的風險和回報。OAS 常用於分析抵押貸款支持證券（MBS）、資產支持證券（ABS）和其他帶有嵌入期權的債券。</p><p>主要特點包括：</p><ol><li><strong>期權調整</strong>：OAS 考慮了債券中嵌入期權的價值，提供了更準確的利差測量。</li><li><strong>收益率差異</strong>：衡量債券相對於無風險利率的收益率差異，反映市場對風險的補償要求。</li><li><strong>風險評估</strong>：幫助投資者評估債券的風險，特別是提前償付或贖回的風險。</li><li><strong>廣泛應用</strong>：廣泛用於 MBS、ABS 和公司債券的分析和定價。</li></ol><p>期權調整利差的計算： OAS 通過模擬不同市場情景下的債券現金流，調整收益率以反映期權的價值。具體計算過程較為複雜，通常使用金融模型和計算工具來完成。</p><p>期權調整利差的應用示例： 假設一家公司發行了一種帶有贖回期權的公司債券，投資者希望評估該債券的風險和回報。通過計算 OAS，投資者可以瞭解該債券在考慮贖回期權後的收益率差異，幫助其做出更明智的投資決策。</p>
+
+<AIContent content={`<p><strong>定義：</strong>期權調整利差（Option-Adjusted Spread, OAS）是衡量包含嵌入期權（如贖回期權或提前償付期權）的債券或證券相對於無風險利率的收益率差異。OAS 通過調整收益率以反映期權的價值，使投資者能夠更準確地評估債券的風險和回報。OAS 常用於分析抵押貸款支持證券（MBS）、資產支持證券（ABS）和其他帶有嵌入期權的債券。</p><p><strong>起源：</strong>期權調整利差的概念起源於 20 世紀 80 年代，隨着金融市場的發展，投資者對複雜金融工具的需求增加，特別是帶有嵌入期權的債券。為了更準確地評估這些債券的風險和回報，金融分析師和學者們開發了 OAS 這一工具。</p><p><strong>類別與特點：</strong></p><ol><li><strong>期權調整：</strong>OAS 考慮了債券中嵌入期權的價值，提供了更準確的利差測量。</li><li><strong>收益率差異：</strong>衡量債券相對於無風險利率的收益率差異，反映市場對風險的補償要求。</li><li><strong>風險評估：</strong>幫助投資者評估債券的風險，特別是提前償付或贖回的風險。</li><li><strong>廣泛應用：</strong>廣泛用於 MBS、ABS 和公司債券的分析和定價。</li></ol><p><strong>具體案例：</strong></p><p>案例 1：假設一家公司發行了一種帶有贖回期權的公司債券，投資者希望評估該債券的風險和回報。通過計算 OAS，投資者可以瞭解該債券在考慮贖回期權後的收益率差異，幫助其做出更明智的投資決策。</p><p>案例 2：某投資者持有一組抵押貸款支持證券（MBS），這些證券包含提前償付期權。通過計算 OAS，投資者可以評估這些 MBS 在不同市場情景下的表現，從而優化其投資組合。</p><p><strong>常見問題：</strong></p><p>1. <strong>OAS 與普通利差有何不同？</strong> OAS 考慮了嵌入期權的價值，而普通利差則沒有這一調整。</p><p>2. <strong>OAS 的計算複雜嗎？</strong> 是的，OAS 的計算通常需要使用金融模型和計算工具，因為它需要模擬不同市場情景下的債券現金流。</p>`} id={102073} />

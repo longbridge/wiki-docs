@@ -5,11 +5,14 @@ id: "100541"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # Roll Yield
 
-<ArticleMeta id={100541} updatedAt={'2023-09-26 13:58:51'} />
+<ArticleMeta id={100541} updatedAt={'2023-09-26 13:58:51'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 Roll yield is the amount of return generated in the futures market after an investor rolls a short-term contract into a longer-term contract and profits from the convergence of the futures price toward a higher spot or cash price. Roll yield is positive when a futures market is in backwardation, which occurs when a futures contract trades at a higher price as it approaches expiration, compared to when the contract is further away from expiration.
+
+<AIContent content={`<p><strong>Definition:</strong> Roll Yield refers to the gains or losses generated in the futures market when rolling over futures contracts as they approach expiration. When investors hold futures contracts nearing their expiration date, they typically sell the expiring contracts and buy longer-dated contracts to maintain their investment positions. The roll yield primarily depends on the shape of the futures curve.</p><p><strong>Origin:</strong> The concept of roll yield originated from the development of the futures market, especially when investors need to hold futures positions for the long term. As the futures market matured, investors gradually recognized the impact of the futures curve shape on roll operations, leading to the formation of the roll yield concept.</p><p><strong>Categories and Characteristics:</strong> Roll yield is mainly divided into two categories: Contango and Backwardation. In a contango market, the price of longer-dated contracts is higher than that of near-term contracts, potentially leading to losses from roll operations. In a backwardation market, the price of longer-dated contracts is lower than that of near-term contracts, potentially resulting in gains. Contango typically occurs in situations of oversupply, while backwardation is more common in scenarios of undersupply.</p><p><strong>Specific Cases:</strong><br/>1. <strong>Contango Case:</strong> Suppose an investor holds an expiring crude oil futures contract priced at $50, while the price of a three-month forward contract is $55. To maintain the position, the investor sells the expiring contract and buys the forward contract, resulting in a loss of $5 per barrel of crude oil.<br/>2. <strong>Backwardation Case:</strong> Suppose an investor holds an expiring gold futures contract priced at $1800, while the price of a three-month forward contract is $1750. The investor sells the expiring contract and buys the forward contract, resulting in a gain of $50 per ounce of gold.</p><p><strong>Common Questions:</strong><br/>1. <strong>Is roll yield always present?</strong> Not necessarily; the presence of roll yield depends on the shape of the futures curve.<br/>2. <strong>How to maximize roll yield?</strong> Investors need to closely monitor market supply and demand conditions and the shape of the futures curve to choose the appropriate timing for roll operations.</p>`} id={100541} />

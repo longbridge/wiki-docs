@@ -5,11 +5,14 @@ id: "101058"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # 修正久期
 
-<ArticleMeta id={101058} updatedAt={'2023-09-26 13:58:54'} />
+<ArticleMeta id={101058} updatedAt={'2024-09-13 11:00:57'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
-修正久期是一個公式，它表達了一個證券在利率變動下可測量的價值變化。修正久期遵循利率和債券價格相反方向移動的概念。這個公式用於確定利率變化 100 個基點 (1%) 對債券價格的影響。
+<p>修正久期是衡量債券價格對利率變化敏感度的指標。它表示在利率變動 1% 的情況下，債券價格的變動百分比。修正久期越高，債券價格對利率變化的敏感度越大。</p>
+
+<AIContent content={`<h2>修正久期</h2><p>修正久期是衡量債券價格對利率變化敏感度的指標。它表示在利率變動 1% 的情況下，債券價格的變動百分比。修正久期越高，債券價格對利率變化的敏感度越大。</p><h3>起源</h3><p>修正久期的概念源自於久期（Duration），最早由美國經濟學家弗雷德裏克·麥考利（Frederick Macaulay）在 1938 年提出。久期最初用於衡量債券的平均加權到期時間。修正久期則是在久期的基礎上，進一步考慮了利率變化對債券價格的影響。</p><h3>類別與特點</h3><p>修正久期主要有以下幾種類型：</p><ul><li><strong>麥考利久期（Macaulay Duration）：</strong>最早提出的久期概念，用於衡量債券的平均加權到期時間。</li><li><strong>修正久期（Modified Duration）：</strong>在麥考利久期的基礎上，考慮了利率變化對債券價格的影響。</li><li><strong>有效久期（Effective Duration）：</strong>用於衡量含有嵌入期權的債券對利率變化的敏感度。</li></ul><p>修正久期的特點在於它能夠更準確地反映債券價格對利率變化的敏感度，尤其是在利率小幅變動的情況下。</p><h3>具體案例</h3><p><strong>案例一：</strong>假設某債券的修正久期為 5 年，當前市場利率為 3%。如果市場利率上升 1% 至 4%，則該債券的價格預計會下降約 5%。</p><p><strong>案例二：</strong>另一隻債券的修正久期為 2 年，當前市場利率為 3%。如果市場利率下降 1% 至 2%，則該債券的價格預計會上升約 2%。</p><h3>常見問題</h3><p><strong>問：</strong>修正久期和久期有什麼區別？<br/><strong>答：</strong>久期主要衡量債券的平均加權到期時間，而修正久期則在久期的基礎上，進一步考慮了利率變化對債券價格的影響。</p><p><strong>問：</strong>修正久期越高越好嗎？<br/><strong>答：</strong>修正久期越高，意味着債券價格對利率變化越敏感，這對於利率下降時是有利的，但在利率上升時則會帶來更大的價格波動風險。</p>`} id={101058} />
