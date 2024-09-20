@@ -112,9 +112,12 @@ export class WikiUtils {
     return processFileContent(string);
   }
 
-  static normalizeMDXContent(content: string) {
+  static normalizeMDXContent(content: string, skipJsxStyle?: boolean): string {
     let newContent = content;
-    newContent = WikiUtils.convertHTMLStyleToJSXStyle(newContent);
+    if (!skipJsxStyle) {
+      // AI 生成的内容样式不需要被转为 jsx
+      newContent = WikiUtils.convertHTMLStyleToJSXStyle(newContent);
+    }
     newContent = WikiUtils.normalizeBRHTMLDOM(newContent);
     return newContent;
   }
@@ -129,7 +132,7 @@ export class WikiUtils {
       jsxDesc: WikiUtils.normalizeHTMLDOM(
         WikiUtils.normalizeMDXContent(this.description)
       ),
-      jsxBody: WikiUtils.normalizeMDXContent(this.body),
+      jsxBody: WikiUtils.normalizeMDXContent(this.body, true),
       liteDesc: this.liteDesc,
       contentUpdatedAt: this.contentUpdatedAt,
       wikiAlias: JSON.stringify(this.wikiAlias),
