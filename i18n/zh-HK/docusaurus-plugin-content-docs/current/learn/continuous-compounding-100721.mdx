@@ -5,11 +5,14 @@ id: "100721"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # 連續複利
 
-<ArticleMeta id={100721} updatedAt={'2023-09-26 13:58:51'} />
+<ArticleMeta id={100721} updatedAt={'2023-09-26 13:58:51'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
-連續複利是指如果複利在理論上的一個無限多期的情況下被計算並重新投資到賬户餘額中，複利可以達到的數學極限。雖然在實踐中這是不可能的，但連續複利的概念在金融中非常重要。它是複利的一種極端情況，因為大多數利率是按月、季度或半年計息。
+<p><span style={{backgroundColor:"rgba(0,0,0,0.05)",color:"rgb(36,41,47)"}}>連續複利（Continuous Compounding）是指利息/收益在每一瞬間都在計算並添加到本金中，從而產生新的利息/收益。與傳統的按年、半年、季度或月計算利息/收益不同，連續複利假設利息的計算頻率趨近於無限次。</span></p>
+
+<AIContent content={`<p><strong>定義：</strong>連續複利（Continuous Compounding）是指利息/收益在每一瞬間都在計算並添加到本金中，從而產生新的利息/收益。與傳統的按年、半年、季度或月計算利息/收益不同，連續複利假設利息的計算頻率趨近於無限次。</p><p><strong>起源：</strong>連續複利的概念源自數學中的極限理論，最早由瑞士數學家雅各布·伯努利（Jacob Bernoulli）在 17 世紀提出。伯努利在研究複利問題時發現，當複利計算頻率趨近於無限時，利息的增長模式可以用自然對數底數 e 來表示。</p><p><strong>類別與特點：</strong>連續複利沒有具體的分類，但其主要特點包括：<ul><li>計算頻率無限：利息在每一瞬間都在計算並添加到本金中。</li><li>公式簡單：連續複利的計算公式為 A = P * e^(rt)，其中 A 為最終金額，P 為初始本金，r 為年利率，t 為時間，e 為自然對數底數（約等於 2.71828）。</li><li>增長速度快：由於計算頻率無限，連續複利的增長速度比任何其他複利方式都快。</li></ul></p><p><strong>具體案例：</strong><ol><li>假設你投資了 1000 元，年利率為 5%，投資期限為 3 年。使用連續複利公式計算：A = 1000 * e^(0.05*3) ≈ 1000 * 1.1618 ≈ 1161.83 元。</li><li>另一個例子是銀行存款。假設銀行提供的年利率為 3%，你存入 5000 元，存期為 5 年。使用連續複利公式計算：A = 5000 * e^(0.03*5) ≈ 5000 * 1.1618 ≈ 5811.28 元。</li></ol></p><p><strong>常見問題：</strong><ul><li><strong>連續複利和普通複利有什麼區別？</strong> 普通複利是按固定週期（如年、半年、季度、月）計算利息，而連續複利是每一瞬間都在計算利息。</li><li><strong>連續複利在實際生活中常見嗎？</strong> 雖然連續複利在理論上非常重要，但在實際生活中，金融機構通常不會採用連續複利，而是使用年、半年、季度或月複利。</li></ul></p>`} id={100721} />

@@ -5,11 +5,14 @@ id: "101203"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # 止損委託
 
-<ArticleMeta id={101203} updatedAt={'2023-09-26 13:58:54'} />
+<ArticleMeta id={101203} updatedAt={'2023-09-26 13:58:54'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
-止損委託是市場上你會遇到的三種主要訂單類型之一: 止損訂單、市價訂單和限價訂單。止損委託訂單總是按照價格的走勢執行。例如，如果市場價格下跌，止損委託將設置為在當前市場價格以下的預設價格賣出。或者，如果價格上漲，止損委託將設置為在證券達到當前市場價格以上的預設價格時買入。根據你的持倉和整體市場策略，有幾種不同類型的止損委託可以採用。以下是各種類型的止損委託以及它們與你在市場中的交易位置的相對功能。
+<p>止損單 是一種交易指令，用於在市場價格達到預設水平時自動執行買入或賣出的操作。止損單分為兩種類型：止損買單（Stop Buy Order）：當市場價格上漲到預設的觸發價格時，自動執行買入操作。通常用於在價格突破某一水平後買入，以防止錯過進一步的上漲機會。止損賣單（Stop Sell Order）：當市場價格下跌到預設的觸發價格時，自動執行賣出操作。通常用於限制損失或保護已有的盈利。</p>
+
+<AIContent content={`<p><strong>定義：</strong>止損委託（Stop Order）是一種交易指令，用於在市場價格達到預設水平時自動執行買入或賣出的操作。止損委託的主要目的是幫助投資者在市場波動中控制風險。</p><p><strong>起源：</strong>止損委託的概念起源於股票和期貨市場，最早在 20 世紀初期被廣泛應用。隨着電子交易平台的發展，止損委託逐漸成為投資者管理風險的重要工具。</p><p><strong>類別與特點：</strong><ul><li><strong>止損買單（Stop Buy Order）：</strong>當市場價格上漲到預設的觸發價格時，自動執行買入操作。通常用於在價格突破某一水平後買入，以防止錯過進一步的上漲機會。</li><li><strong>止損賣單（Stop Sell Order）：</strong>當市場價格下跌到預設的觸發價格時，自動執行賣出操作。通常用於限制損失或保護已有的盈利。</li></ul></p><p><strong>具體案例：</strong><ul><li><strong>案例一：</strong>投資者 A 持有某股票，當前價格為 100 元。為了防止股價下跌帶來的損失，A 設置了一個止損賣單，觸發價格為 90 元。當股價跌至 90 元時，系統自動賣出該股票，從而限制了損失。</li><li><strong>案例二：</strong>投資者 B 看好某股票，當前價格為 50 元。B 認為如果股價突破 60 元，可能會有更大的上漲空間，因此設置了一個止損買單，觸發價格為 60 元。當股價漲至 60 元時，系統自動買入該股票，幫助 B 抓住上漲機會。</li></ul></p><p><strong>常見問題：</strong><ul><li><strong>問題一：</strong>止損委託是否能保證在觸發價格執行？<br/><strong>解答：</strong>止損委託在觸發價格執行時，可能會因為市場波動或流動性不足而無法以預期價格成交。</li><li><strong>問題二：</strong>止損委託是否適用於所有市場？<br/><strong>解答：</strong>止損委託在大多數股票和期貨市場都適用，但在某些市場或交易平台可能有不同的規則和限制。</li></ul></p>`} id={101203} />

@@ -5,11 +5,14 @@ id: "100125"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # Kappa
 
-<ArticleMeta id={100125} updatedAt={'2023-09-26 13:58:47'} />
+<ArticleMeta id={100125} updatedAt={'2023-09-26 13:58:47'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 Kappa is the measurement of an option contract's price sensitivity to changes in the volatility of the underlying asset. Volatility accounts for recent changes in price, historical changes in price, and future price moves. For a trading instrument, like an option, volatility is intended to capture the amount and speed at which the price moves up and down.
+
+<AIContent content={`<p><strong>Definition:</strong> Kappa, also known as Vega, measures the sensitivity of an option's price to changes in the volatility of the underlying asset. It reflects how much the price of an option will change with a 1% change in the volatility of the underlying asset.</p><p><strong>Origin:</strong> The concept of Kappa originates from financial engineering and option pricing theory. It is part of the Black-Scholes model, introduced by Fischer Black and Myron Scholes in 1973, which provides a mathematical framework for option pricing.</p><p><strong>Categories and Characteristics:</strong> Kappa is primarily used to measure the sensitivity of an option's price to changes in volatility. Its characteristics include: <ul><li>Positive Kappa: Indicates that the option's price increases as volatility increases.</li><li>Negative Kappa: Indicates that the option's price decreases as volatility increases (this is less common).</li><li>Magnitude of Kappa: The larger the Kappa, the more sensitive the option's price is to changes in volatility.</li></ul></p><p><strong>Specific Cases:</strong><ol><li>Suppose a stock is currently priced at $100 with a volatility of 20%, and an investor buys a call option with a Kappa of 0.25. If the volatility increases to 25%, the option's price will increase by $0.25.</li><li>In another example, an investor holds a put option with a Kappa of -0.15. If the volatility decreases from 30% to 25%, the option's price will decrease by $0.15.</li></ol></p><p><strong>Common Questions:</strong><ul><li>Does Kappa change over time? Yes, Kappa changes with the underlying asset's price, volatility, and time.</li><li>Is Kappa applicable to all options? Yes, Kappa applies to all types of options, including call and put options.</li></ul></p>`} id={100125} />

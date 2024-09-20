@@ -88,10 +88,36 @@ export class WikiUtils {
   static normalizeBRHTMLDOM(string) {
     return string.replace(/<br>/g, "<br/>");
   }
+  static normalizeHTMLDOM(string) {
+    // 正则表达式匹配未闭合的 HTML 标签
+    const unclosedTagRegex = /<([a-zA-Z]+)([^>]*)>/g;
 
-  static normalizeMDXContent(content: string) {
+    // 要处理的 Markdown 文件路径
+
+    // 处理文件内容
+    function processFileContent(content) {
+      return content.replace(unclosedTagRegex, (match, tagName, attributes) => {
+        // 检查是否是自闭合标签
+        const selfClosingTags = ["img", "br", "hr", "input", "link", "meta"];
+        if (selfClosingTags.includes(tagName.toLowerCase())) {
+          // 如果标签已经是自闭合的，就跳过
+          if (attributes.trim().endsWith("/")) {
+            return match;
+          }
+          return `<${tagName} ${attributes.trim()} />`;
+        }
+        return match;
+      });
+    }
+    return processFileContent(string);
+  }
+
+  static normalizeMDXContent(content: string, skipJsxStyle?: boolean): string {
     let newContent = content;
-    newContent = WikiUtils.convertHTMLStyleToJSXStyle(newContent);
+    if (!skipJsxStyle) {
+      // AI 生成的内容样式不需要被转为 jsx
+      newContent = WikiUtils.convertHTMLStyleToJSXStyle(newContent);
+    }
     newContent = WikiUtils.normalizeBRHTMLDOM(newContent);
     return newContent;
   }
@@ -103,8 +129,10 @@ export class WikiUtils {
       body: this.body,
       pageSlug: this.pageSlug,
       description: this.description,
-      jsxDesc: WikiUtils.normalizeMDXContent(this.description),
-      jsxBody: WikiUtils.normalizeMDXContent(this.body),
+      jsxDesc: WikiUtils.normalizeHTMLDOM(
+        WikiUtils.normalizeMDXContent(this.description)
+      ),
+      jsxBody: WikiUtils.normalizeMDXContent(this.body, true),
       liteDesc: this.liteDesc,
       contentUpdatedAt: this.contentUpdatedAt,
       wikiAlias: JSON.stringify(this.wikiAlias),

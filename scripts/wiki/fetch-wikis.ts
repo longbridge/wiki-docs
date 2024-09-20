@@ -7,21 +7,32 @@ import process from "node:process";
 const apiBaseURL = process.env.API_BASE_URL;
 
 function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 let retryTimes = 0;
 
-export async function fetchWikiList(memo: IWiki[], limit = 100, id = 0, last_update_at = 0) {
-  console.log("--> fetch wikis from:", dayjs(last_update_at * 1000).format("YYYY-MM-DD HH:mm:ss"));
+export async function fetchWikiList(
+  memo: IWiki[],
+  limit = 100,
+  id = 0,
+  last_update_at = 0
+) {
+  console.log(
+    "--> fetch wikis from:",
+    dayjs(last_update_at * 1000).format("YYYY-MM-DD HH:mm:ss")
+  );
   const queriesShow = {
     id,
     last_update_at,
-    limit
+    limit,
   };
-  const queries = { ...queriesShow, token: process.env.API_SECRETS_TOKEN || "none" };
+  const queries = {
+    ...queriesShow,
+    token: process.env.API_SECRETS_TOKEN || "none",
+  };
   const currentPath = withQuery("api/forward/social/wiki/lists", queries);
-  const loggerPath = withQuery("api/forward/social/wiki/lists", queriesShow)
+  const loggerPath = withQuery("api/forward/social/wiki/lists", queriesShow);
   const currentURL = `${apiBaseURL}/${currentPath}`;
   try {
     console.log("--> fetch url: ", loggerPath);
@@ -29,16 +40,18 @@ export async function fetchWikiList(memo: IWiki[], limit = 100, id = 0, last_upd
     if (!resp.data) {
       if (retryTimes < 3) {
         retryTimes += 1;
-        console.log(`[warning] found wikis length = 0 now delay 1000ms retry request ${loggerPath} times ${retryTimes}`);
+        console.log(
+          `[warning] found wikis length = 0 now delay 1000ms retry request ${loggerPath} times ${retryTimes}`
+        );
         await delay(1000);
         await fetchWikiList(memo, limit, id, last_update_at);
       }
     } else {
       retryTimes = 0;
     }
-    const {
-      data: { list: wikis } = { list: [] }
-    } = resp.data || { data: { list: [] } };
+    const { data: { list: wikis } = { list: [] } } = resp.data || {
+      data: { list: [] },
+    };
 
     // write temp response data to temp dirs
     // const tempFilePath =`/tmp/wikis/${[id||0, last_update_at||0].join("-")}.json`

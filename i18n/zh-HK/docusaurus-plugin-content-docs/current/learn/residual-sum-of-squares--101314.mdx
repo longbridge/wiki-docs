@@ -5,11 +5,14 @@ id: "101314"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # 殘差平方和
 
-<ArticleMeta id={101314} updatedAt={'2023-09-26 13:58:54'} />
+<ArticleMeta id={101314} updatedAt={'2024-09-13 10:49:16'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 殘差平方和 (RSS) 是一種統計技術，用於衡量回歸模型本身無法解釋的數據集中的方差量。它估計了殘差或誤差項的方差。線性迴歸是一種測量方法，用於確定因變量與一個或多個其他因素 (稱為獨立變量或解釋變量) 之間關係強度的方法。
+
+<AIContent content={`<p><strong>定義：</strong><br/>殘差平方和（Residual Sum of Squares，簡稱 RSS）是一種統計技術，用於衡量回歸模型本身無法解釋的數據集中的方差量。它估計了殘差或誤差項的方差。殘差是指實際觀測值與模型預測值之間的差異。RSS 在評估迴歸模型的擬合優度時非常重要，RSS 越小，模型的擬合效果越好。</p><p><strong>起源：</strong><br/>殘差平方和的概念源於統計學中的迴歸分析。迴歸分析最早由弗朗西斯·高爾頓（Francis Galton）在 19 世紀提出，用於研究遺傳學中的相關性問題。隨着統計學的發展，殘差平方和逐漸成為評估迴歸模型擬合優度的重要指標。</p><p><strong>類別與特點：</strong><br/>1. <strong>線性迴歸中的 RSS：</strong> 在簡單線性迴歸中，RSS 用於衡量因變量與單個自變量之間的關係。<br/>2. <strong>多元迴歸中的 RSS：</strong> 在多元迴歸中，RSS 用於衡量因變量與多個自變量之間的關係。<br/>3. <strong>特點：</strong> RSS 值越小，表示模型對數據的擬合越好；RSS 值越大，表示模型對數據的擬合較差。</p><p><strong>具體案例：</strong><br/>1. <strong>案例一：</strong> 假設我們有一個數據集，記錄了某城市的房價（因變量）與房屋面積（自變量）之間的關係。通過線性迴歸模型，我們可以預測房價。計算 RSS 可以幫助我們評估模型的預測效果。如果 RSS 值較小，説明模型對房價的預測較為準確。<br/>2. <strong>案例二：</strong> 在市場營銷中，企業可能會使用多元迴歸模型來預測銷售額（因變量），自變量可能包括廣告支出、促銷活動和市場趨勢等。通過計算 RSS，企業可以評估模型的預測效果，並根據結果調整營銷策略。</p><p><strong>常見問題：</strong><br/>1. <strong>RSS 值越小越好嗎？</strong> 是的，RSS 值越小，表示模型對數據的擬合越好，但也要注意避免過擬合。<br/>2. <strong>如何降低 RSS 值？</strong> 可以通過增加自變量、選擇合適的模型或進行數據預處理等方法來降低 RSS 值。</p>`} id={101314} />

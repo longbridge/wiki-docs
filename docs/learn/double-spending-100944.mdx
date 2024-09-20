@@ -5,11 +5,14 @@ id: "100944"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # Double-Spending
 
-<ArticleMeta id={100944} updatedAt={'2023-09-26 13:58:51'} />
+<ArticleMeta id={100944} updatedAt={'2023-09-26 13:58:51'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 Double-spending is the risk that a cryptocurrency can be used twice or more. Transaction information within a blockchain can be altered if specific conditions are met. The conditions allow modified blocks to enter the blockchain; if this happens, the person that initiated the alteration can reclaim spent coins.
+
+<AIContent content={`<p><strong>Definition:</strong> Double spending refers to the risk that a cryptocurrency can be used more than once. This typically occurs in blockchain networks when transaction information is altered under specific conditions, leading to the same cryptocurrency being spent multiple times.</p><p><strong>Origin:</strong> The double spending problem was first mentioned in the Bitcoin whitepaper. Satoshi Nakamoto introduced the concept of Bitcoin in 2008 and designed a blockchain-based solution to prevent double spending. The blockchain ensures the uniqueness and immutability of each transaction through a distributed ledger and consensus mechanism.</p><p><strong>Categories and Characteristics:</strong> Double spending mainly has two types: 1. <em>Race Attack</em>: The attacker sends the same cryptocurrency transaction to two different recipients simultaneously, attempting to get one of the transactions confirmed. 2. <em>51% Attack</em>: The attacker controls more than 50% of the network's hash power, allowing them to reorganize the blockchain and reverse confirmed transactions, thus achieving double spending. The characteristics of double spending depend on the network's security and the effectiveness of the consensus mechanism.</p><p><strong>Specific Cases:</strong> 1. <em>Race Attack Case</em>: A user purchases goods online and simultaneously sends the same Bitcoin transaction to the merchant and another of their own wallets. If the merchant ships the goods before the transaction is fully confirmed, the attacker can cancel the transaction to the merchant, achieving double spending. 2. <em>51% Attack Case</em>: In 2019, Ethereum Classic (ETC) suffered a 51% attack, where the attacker controlled the network's hash power and successfully performed double spending by reversing and reorganizing transactions.</p><p><strong>Common Questions:</strong> 1. <em>How to prevent double spending?</em>: Ensure that transactions receive enough confirmations on the blockchain, typically at least six confirmations are recommended. 2. <em>What impact does double spending have on regular users?</em>: Regular users usually do not encounter double spending issues in daily transactions but should pay attention to the confirmation status of transactions, especially for large transactions.</p>`} id={100944} />

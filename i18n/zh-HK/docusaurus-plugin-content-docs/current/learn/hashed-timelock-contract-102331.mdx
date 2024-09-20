@@ -5,11 +5,14 @@ id: "102331"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # 哈希時間鎖合約
 
-<ArticleMeta id={102331} updatedAt={'2023-09-26 13:59:00'} />
+<ArticleMeta id={102331} updatedAt={'2024-09-12 16:40:12'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 哈希時間鎖合約 (HTLC) 是區塊鏈應用中使用的一種智能合約類型。它通過創建一個基於時間的託管來降低交易對手風險，在解鎖時需要一個加密密碼短語。從實際角度來看，這意味着在交易中接收資金的人必須執行兩個操作才能訪問這些資金：輸入正確的密碼短語並在特定時間範圍內申請支付。如果他們輸入了錯誤的密碼短語或者在規定的時間範圍內沒有申請支付，他們將失去訪問這筆款項的權限。
+
+<AIContent content={`<p><strong>定義：</strong>哈希時間鎖合約（Hash Time-Locked Contract，簡稱 HTLC）是一種用於區塊鏈應用的智能合約類型。它通過創建一個基於時間的託管機制來降低交易對手風險。在解鎖時，HTLC 要求接收資金的一方必須提供一個加密密碼短語，並在特定時間範圍內申請支付。如果接收方輸入了錯誤的密碼短語或未在規定時間內申請支付，他們將失去訪問這筆款項的權限。</p><p><strong>起源：</strong>HTLC 的概念最早出現在比特幣和其他加密貨幣的跨鏈交易中。它的設計目的是解決交易對手風險問題，確保在沒有信任基礎的情況下，交易雙方都能安全地進行交易。HTLC 的應用逐漸擴展到其他區塊鏈平台和智能合約中。</p><p><strong>類別與特點：</strong>HTLC 主要有兩種類型：單鏈 HTLC 和跨鏈 HTLC。<ul><li><strong>單鏈 HTLC：</strong>這種類型的 HTLC 在同一條區塊鏈上進行交易。它的特點是實現簡單，適用於同一平台內的交易。</li><li><strong>跨鏈 HTLC：</strong>這種類型的 HTLC 用於不同區塊鏈之間的交易。它的特點是複雜度較高，但能夠實現跨鏈資產轉移，適用於需要在不同區塊鏈之間進行交易的場景。</li></ul>HTLC 的主要特點包括：<ul><li>降低交易對手風險：通過時間鎖和密碼短語機制，確保交易雙方的資金安全。</li><li>自動化執行：智能合約自動執行，無需第三方介入。</li><li>靈活性：可以應用於多種區塊鏈平台和交易類型。</li></ul></p><p><strong>具體案例：</strong><ul><li><strong>案例一：</strong>Alice 和 Bob 希望在比特幣和以太坊之間進行跨鏈交易。Alice 將比特幣發送到一個 HTLC 地址，並生成一個加密密碼短語。Bob 在以太坊上創建一個 HTLC 合約，並提供相同的密碼短語。Alice 在規定時間內輸入密碼短語，完成交易，Bob 也在規定時間內輸入密碼短語，完成交易。這樣，Alice 和 Bob 都能安全地完成跨鏈交易。</li><li><strong>案例二：</strong>Charlie 和 Dave 在同一條區塊鏈上進行交易。Charlie 將資金髮送到一個 HTLC 地址，並生成一個加密密碼短語。Dave 在規定時間內輸入密碼短語，完成交易。如果 Dave 未能在規定時間內輸入密碼短語，資金將自動退回給 Charlie。</li></ul></p><p><strong>常見問題：</strong><ul><li><strong>問題一：</strong>如果接收方忘記了密碼短語怎麼辦？<br/><strong>解答：</strong>如果接收方忘記了密碼短語，他們將無法訪問這筆款項，資金將退回給發送方。</li><li><strong>問題二：</strong>HTLC 是否適用於所有區塊鏈平台？<br/><strong>解答：</strong>HTLC 主要適用於支持智能合約的區塊鏈平台，如以太坊和比特幣。對於不支持智能合約的區塊鏈，HTLC 的應用可能受到限制。</li></ul></p>`} id={102331} />

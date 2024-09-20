@@ -5,11 +5,14 @@ id: "100903"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # Time Decay
 
-<ArticleMeta id={100903} updatedAt={'2023-09-26 13:58:51'} />
+<ArticleMeta id={100903} updatedAt={'2023-09-26 13:58:51'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 Time decay is a measure of the rate of decline in the value of an options contract due to the passage of time. Time decay accelerates as an option's time to expiration draws closer since there's less time to realize a profit from the trade.
+
+<AIContent content={`<p><strong>Definition:</strong> Time Decay refers to the phenomenon where the value of an options contract gradually decreases over time. The rate of time decay accelerates as the option's expiration date approaches because there is less time for the trader to profit from the option.</p><p><strong>Origin:</strong> The concept of time decay originates from options pricing theory, particularly the Black-Scholes Model, which was introduced by Fischer Black and Myron Scholes in 1973. Time decay is a crucial factor in options pricing as it directly affects the time value of an option.</p><p><strong>Categories and Characteristics:</strong> Time decay primarily affects the time value of an option, not its intrinsic value. The time value is the portion of the option's price that exceeds its intrinsic value, reflecting the potential for the option to become profitable before expiration. As the expiration date approaches, the time value diminishes, eventually reaching zero on the expiration date.<ul><li><strong>Call Options:</strong> Time decay significantly impacts call options because the holder hopes for the underlying asset's price to rise.</li><li><strong>Put Options:</strong> Time decay also significantly impacts put options because the holder hopes for the underlying asset's price to fall.</li></ul></p><p><strong>Specific Cases:</strong><ol><li><strong>Case 1:</strong> Suppose you hold a call option with the underlying asset's current price at $100, a strike price of $105, and one month until expiration. As time passes, if the underlying asset's price does not significantly increase, the option's time value will gradually decrease, eventually reaching zero at expiration.</li><li><strong>Case 2:</strong> Suppose you hold a put option with the underlying asset's current price at $100, a strike price of $95, and one month until expiration. If the underlying asset's price does not significantly decrease, the option's time value will also gradually decrease, eventually reaching zero at expiration.</li></ol></p><p><strong>Common Questions:</strong><ul><li><strong>How does time decay affect options traders?</strong> Time decay causes the value of options to gradually decrease, so options traders need to execute trades at the right time to avoid losses due to time decay.</li><li><strong>How is the rate of time decay calculated?</strong> The rate of time decay can be calculated using the “θ” (Theta) in options pricing models like the Black-Scholes Model. Theta represents the rate at which the option's price changes over time.</li></ul></p>`} id={100903} />

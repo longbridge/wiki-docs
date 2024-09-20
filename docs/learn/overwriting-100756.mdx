@@ -5,11 +5,14 @@ id: "100756"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # Overwriting
 
-<ArticleMeta id={100756} updatedAt={'2023-09-26 13:58:51'} />
+<ArticleMeta id={100756} updatedAt={'2023-09-26 13:58:51'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 Overwriting is a trading strategy that involves selling options that are believed to be overpriced, with the assumption that the options won't get exercised before they expire.
+
+<AIContent content={`<p><strong>Definition:</strong> Buyer's Crush is a trading strategy that typically involves selling options that are considered overpriced, assuming that these options will not be exercised before expiration. Traders aim to profit from the time value of the options through this strategy.</p><p><strong>Origin:</strong> The Buyer's Crush strategy originated with the development of the options market, particularly after the widespread adoption of options pricing models like the Black-Scholes model. As market participants gained a deeper understanding of options pricing, they began to exploit pricing errors for arbitrage, leading to the development of this strategy.</p><p><strong>Categories and Characteristics:</strong> The Buyer's Crush strategy mainly falls into two categories: selling call options and selling put options.<ul><li><strong>Selling Call Options:</strong> Traders believe that the underlying asset's price will not rise significantly, so they sell call options to earn the option premium.</li><li><strong>Selling Put Options:</strong> Traders believe that the underlying asset's price will not fall significantly, so they sell put options to earn the option premium.</li></ul>The main characteristic of this strategy is its high risk, as traders may face unlimited losses if the market moves contrary to their expectations.</p><p><strong>Specific Cases:</strong><ul><li><strong>Case 1:</strong> Suppose a trader believes that a stock's price will not exceed $100 in the next month, so they sell a call option with a strike price of $100. If the stock price is below $100 at expiration, the trader retains the option premium as profit.</li><li><strong>Case 2:</strong> Another trader believes that a stock's price will not fall below $50 in the next month, so they sell a put option with a strike price of $50. If the stock price is above $50 at expiration, the trader retains the option premium as profit.</li></ul></p><p><strong>Common Questions:</strong><ul><li><strong>Question 1:</strong> What if the market moves contrary to expectations?<br/><strong>Answer:</strong> Traders may face unlimited losses, so it is essential to set stop-loss strategies to control risk.</li><li><strong>Question 2:</strong> How to choose the right options to sell?<br/><strong>Answer:</strong> Traders need to have a high degree of confidence in the price movement of the underlying asset and select options that are considered overpriced to sell.</li></ul></p>`} id={100756} />

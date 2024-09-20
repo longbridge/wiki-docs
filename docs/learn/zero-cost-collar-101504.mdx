@@ -5,11 +5,14 @@ id: "101504"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # Zero Cost Collar
 
-<ArticleMeta id={101504} updatedAt={'2023-09-26 13:58:58'} />
+<ArticleMeta id={101504} updatedAt={'2023-09-26 13:58:58'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 A zero cost collar is a form of options collar strategy that limits your losses. To execute it, you sell a short call option and buy a long put option whose prices cancel each other out. The downside of this strategy is that profits are capped if the underlying asset's price increases.
+
+<AIContent content={`<p><strong>Definition:</strong> A zero-cost option is a strategy that limits losses by selling a call option and buying a put option, with their prices offsetting each other. The downside of this strategy is that if the underlying asset's price rises, the profit will be limited.</p><p><strong>Origin:</strong> The zero-cost option strategy originated from the development of the options market, where investors invented this strategy to hedge risks without increasing costs. The exact timeline is unclear, but this strategy became popular in the financial markets in the late 20th century.</p><p><strong>Categories and Characteristics:</strong> Zero-cost options are mainly divided into two categories: bullish zero-cost options and bearish zero-cost options. Bullish zero-cost options are suitable for investors with a neutral or slightly bullish market outlook, while bearish zero-cost options are for those with a neutral or slightly bearish outlook. The main feature is achieving a zero-cost hedge by combining selling and buying options, but it also limits potential profits.</p><p><strong>Specific Cases:</strong> Case 1: Suppose an investor holds 100 shares of a company, currently priced at $50. To hedge against downside risk, the investor sells a call option with a strike price of $55 and buys a put option with a strike price of $45. If the stock price falls below $45, the put option provides protection; if it rises above $55, the call option limits the profit. Case 2: An investor expects significant volatility in a stock but is unsure of the direction. The investor can achieve zero-cost hedging by selling a call option with a higher strike price and buying a put option with a lower strike price.</p><p><strong>Common Questions:</strong> 1. Is the zero-cost option strategy completely cost-free? A: Although called zero-cost options, there may still be some transaction fees and taxes. 2. Is this strategy suitable for all investors? A: The zero-cost option strategy is suitable for investors with some experience in options trading, as it requires a good understanding of option pricing and market trends.</p>`} id={101504} />

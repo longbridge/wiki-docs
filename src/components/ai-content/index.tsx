@@ -20,7 +20,7 @@ const LocalesMap = {
   },
 };
 export const AIContent: React.FC<AIContentProps> = ({ content, id }) => {
-  const [AIContent, setAIContent] = useState(content);
+  const [aiContent, setAIContent] = useState(content);
   const locale = useDefaultLocale() || "en";
 
   const {
@@ -30,7 +30,7 @@ export const AIContent: React.FC<AIContentProps> = ({ content, id }) => {
   } = useDocusaurusContext();
 
   useEffect(() => {
-    if (!apiProxyUrl || !id || AIContent) return;
+    if (!apiProxyUrl || !id || aiContent) return;
 
     get(`${apiProxyUrl}/v1/social/wiki/content`, { id }).then((resp) => {
       const { data } = resp;
@@ -40,14 +40,13 @@ export const AIContent: React.FC<AIContentProps> = ({ content, id }) => {
     });
   }, [apiProxyUrl, id]);
 
-  if (!AIContent) return <></>;
+  if (!aiContent) return null;
   return (
     <div className="ai-content pt-8 rounded-lg">
       <div
-        dangerouslySetInnerHTML={{ __html: AIContent }}
+        dangerouslySetInnerHTML={{ __html: aiContent }}
         className="border-solid border-t border-b-0 border-r-0 border-l-0 border-[var(--ifm-color-gray-300)] pt-5"
       ></div>
-
       <div className="flex items-center space-x-4 pt-3 mb-3 border-solid border-t border-b-0 border-r-0 border-l-0 border-[var(--ifm-color-gray-300)]">
         <img
           src="https://assets.lbctrl.com/uploads/831466be-e4f8-46a7-aa0b-efcda7a424ff/portai.png"

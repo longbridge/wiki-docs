@@ -5,11 +5,14 @@ id: "101462"
 hide_table_of_contents: true
 ---
 
-import {ArticleMeta} from '@site/src/components/article-meta'
+import { ArticleMeta } from "@site/src/components/article-meta";
+import { AIContent } from "@site/src/components/ai-content";
 
 # 經濟訂購量
 
-<ArticleMeta id={101462} updatedAt={'2023-09-26 13:58:54'} />
+<ArticleMeta id={101462} updatedAt={'2024-09-13 10:41:20'} alias={`[]`} />
 <div className='border-solid border-b border-t-0 my-4 border-[var(--ifm-color-gray-300)]' />
 
 經濟訂購量（EOQ）是指公司應該購買的理想單位數量，以滿足需求，同時儘量減少庫存成本，如持有成本、短缺成本和訂購成本。這個生產調度模型是由福特·W·哈里斯在 1913 年開發的，並經過了不斷的改進。經濟訂購量公式假設需求、訂購和持有成本都保持不變。
+
+<AIContent content={`<p><strong>定義：</strong>經濟訂購量（Economic Order Quantity，簡稱 EOQ）是指公司在滿足需求的同時，儘量減少庫存成本（包括持有成本、短缺成本和訂購成本）所應購買的理想單位數量。EOQ 模型幫助企業確定最佳的訂購量，以實現庫存管理的最優化。</p><p><strong>起源：</strong>經濟訂購量模型最早由福特·W·哈里斯於 1913 年提出。儘管最初的模型較為簡單，但隨着時間的推移，研究人員和實踐者對其進行了多次改進，使其更加適應現代企業的需求。</p><p><strong>類別與特點：</strong>EOQ 模型主要有以下幾個特點：<ul><li><strong>固定需求：</strong>假設需求量是已知且恆定的。</li><li><strong>固定訂購成本：</strong>每次訂購的成本是固定的，不隨訂購數量變化。</li><li><strong>固定持有成本：</strong>持有庫存的成本是固定的，通常與庫存量成正比。</li></ul>此外，EOQ 模型還可以根據不同的需求和成本結構進行調整，如考慮批量折扣、變動需求等。</p><p><strong>具體案例：</strong><ol><li><strong>案例一：</strong>某零售公司每年需要銷售 12000 個產品，每次訂購的固定成本為 100 元，持有每個產品的年成本為 2 元。通過 EOQ 公式計算，該公司每次應訂購的數量為：<br/>EOQ = √(2DS/H) = √(2*12000*100/2) = √1200000 = 1095 個。<br/>這樣可以最小化總庫存成本。</li><li><strong>案例二：</strong>一家制造企業每年需要 5000 個零部件，每次訂購的固定成本為 50 元，持有每個零部件的年成本為 1 元。通過 EOQ 公式計算，該企業每次應訂購的數量為：<br/>EOQ = √(2DS/H) = √(2*5000*50/1) = √500000 = 707 個。<br/>這樣可以有效減少庫存持有和訂購成本。</li></ol></p><p><strong>常見問題：</strong><ul><li><strong>問題一：</strong>如果需求量不恆定，EOQ 模型是否仍然適用？<br/><strong>解答：</strong>EOQ 模型假設需求量是恆定的。如果需求量波動較大，可能需要使用其他庫存管理模型，如動態訂購模型。</li><li><strong>問題二：</strong>如何處理批量折扣？<br/><strong>解答：</strong>在存在批量折扣的情況下，可以調整 EOQ 公式，考慮不同訂購量下的總成本，選擇最小化總成本的訂購量。</li></ul></p>`} id={101462} />
